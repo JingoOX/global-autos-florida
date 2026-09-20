@@ -1,5 +1,30 @@
 import type { Metadata } from "next";
+import { Archivo_Black, Barlow_Condensed, Barlow } from "next/font/google";
 import "./globals.css";
+
+// Skill recommendation: "Sports/Fitness" pairing — Barlow Condensed (heading) + Barlow (body)
+// for athletic / energetic / automotive brands. Archivo Black retained as the bold display
+// face for hero headlines (matches the original brand identity).
+const archivoBlack = Archivo_Black({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-archivo-black",
+  display: "swap",
+});
+
+const barlowCondensed = Barlow_Condensed({
+  subsets: ["latin"],
+  weight: ["500", "600", "700"],
+  variable: "--font-barlow-condensed",
+  display: "swap",
+});
+
+const barlow = Barlow({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-barlow",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: "Global Autos Florida LLC | Autos seminuevos y broker de subastas en Kissimmee, FL",
@@ -34,7 +59,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es" suppressHydrationWarning>
+    <html
+      lang="es"
+      suppressHydrationWarning
+      className={`${archivoBlack.variable} ${barlowCondensed.variable} ${barlow.variable}`}
+    >
       <body>{children}</body>
     </html>
   );
