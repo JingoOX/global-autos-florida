@@ -194,7 +194,9 @@ header.scrolled .nav{padding-block:12px}
  linear-gradient(180deg,#111 0%,#0A0A0A 100%);
  clip-path:polygon(0 0,calc(100% - 16px) 0,100% 16px,100% 100%,0 100%)}
 /* ⬇ FORMATO DE VISUALIZACIÓN 4:5 — tarjetas, galería y miniaturas */
-.showroom img{width:100%;display:block;aspect-ratio:4/5;object-fit:cover;object-position:50% 55%}
+/* object-position centrado: muestra el auto completo (antes 50% 55% cortaba el techo
+   en fotos frontales 3/4 y dejaba mucho asfalto visible) */
+.showroom img{width:100%;display:block;aspect-ratio:4/5;object-fit:cover;object-position:50% 50%}
 .showroom .car-svg{padding:34px 18px 8px}
 .car-svg{width:100%;display:block}
 .car-svg .body{fill:var(--body)}
@@ -412,7 +414,7 @@ footer{background:#050505;border-top:1px solid var(--line);padding:64px 0 0}
 .modal-show .car-svg .tl{fill:#FF5A3C}
 .modal-show.gal-mode{display:block;padding:24px}
 .gal-main{position:relative;aspect-ratio:4/5;background:#0A0A0A;overflow:hidden;border:1px solid #1E1E1E}
-.gal-main img{width:100%;height:100%;object-fit:cover;object-position:50% 55%;display:block;animation:galIn .3s ease both}
+.gal-main img{width:100%;height:100%;object-fit:cover;object-position:50% 50%;display:block;animation:galIn .3s ease both}
 @keyframes galIn{from{opacity:.25;transform:scale(1.015)}to{opacity:1;transform:none}}
 .gal-arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:4;width:42px;height:42px;display:flex;align-items:center;justify-content:center;background:rgba(10,10,10,.78);border:1px solid #2E2E2E;color:var(--text);transition:.2s;backdrop-filter:blur(4px)}
 .gal-arrow .ic{width:20px;height:20px}

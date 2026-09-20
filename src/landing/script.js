@@ -53,7 +53,22 @@ const CARS = [
      'https://z-cdn-media.chatglm.cn/files/130b16d6-cc98-4f64-b2fd-a7c3ad48df84.jpg?auth_key=1889873116-d426c32be92d4b13b91410f4d9f186bb-0-eb48891793a8d5fdaeaca7a4b9a761c8'
    ],
    desc:'La edición que los coleccionistas del Corolla buscan: paquete Nightshade de fábrica con rines 18" negro brillante, spoiler, retrovisores, manijas y emblemas ahumados — el look "blanco sobre negro" sin tocarle nada. Motor 2.0L de 169 HP, Toyota Safety Sense 2.0 completo y 34 MPG. 81 mil millas en un Corolla son apenas el calentamiento: este motor está hecho para triplicarlas.',
-   feats:['Edición Nightshade · acentos negro','Rines 18" negro brillante','Toyota Safety Sense 2.0','CarPlay / Amazon Alexa','Crucero adaptativo','Doble escape']}
+   feats:['Edición Nightshade · acentos negro','Rines 18" negro brillante','Toyota Safety Sense 2.0','CarPlay / Amazon Alexa','Crucero adaptativo','Doble escape']},
+
+  {id:3, folder:'03-toyota-camry-xse',
+   year:2020, make:'Toyota', model:'Camry XSE', type:'sedan',
+   price:20500, miles:64500,
+   trans:'Automática 8 velocidades', fuel:'Gasolina · 32 MPG', drive:'Delantera (FWD)',
+   engine:'2.5L I4 · 206 HP', ext:'Celestial Silver Metallic',
+   cond:'Seminuevo', badge:'NUEVO INGRESO', featured:true,
+   photos:[
+     '',
+     '',
+     '',
+     ''
+   ],
+   desc:'El Camry en su versión más deportiva: el XSE. Motor 2.5L Dynamic Force de 206 HP con transmisión automática de 8 velocidades — la combinación que convirtió al Camry en el sedán más vendido de América. Celestial Silver Metallic sobre cuero negro, techo panorámico, JBL, head-up display y Toyota Safety Sense 2.0+ completo. 64 mil millas apenas: este motor está hecho para pasar de las 200 mil sin sudar.',
+   feats:['Techo panorámico','Asientos de cuero calefactados','JBL Premium Audio','Head-up display','Toyota Safety Sense 2.0+','CarPlay / Android Auto']}
 ];
 
 /* ================= SILUETAS (respaldo de autos sin fotos) ================= */
@@ -119,7 +134,8 @@ function waCar(c){
   return waLink(`Hola Global Autos Florida! Me interesa el ${c.year} ${c.make} ${c.model} ($${fmt(c.price)}) que vi en su página. ¿Sigue disponible?`);
 }
 function photoImg(c, i, extra=''){
-  return `<img src="autos/${c.folder}/${i+1}.webp" data-fb="${c.photos[i]}" onerror="imgFB(this)" ${extra} decoding="async">`;
+  const fb = c.photos && c.photos[i] ? ` data-fb="${c.photos[i]}" onerror="imgFB(this)"` : '';
+  return `<img src="autos/${c.folder}/${i+1}.webp"${fb} ${extra} decoding="async">`;
 }
 function wheel([x,y]){
   return `<g class="wheel" transform="translate(${x},${y})">
