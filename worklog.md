@@ -254,3 +254,48 @@ Stage Summary:
 - 6 photos processed to 4:5 WebP (750.6KB total), cover = front 3/4 view of white Camry.
 - Bug fix: galCount() helper + numPhotos field fixed gallery logic for cars with empty photos arrays. Retroactively fixed the Malibu modal that was broken since Task 5.
 - Inventory now: 5 cars (Honda Civic, Toyota Corolla, Toyota Camry XSE, Chevrolet Malibu, Toyota Camry LE). Total image weight: 25 WebP files (8+5+4+5+6) = ~3.9MB.
+
+---
+Task ID: 7
+Agent: main (Z.ai Code)
+Task: Add a new car (2024 MINI Cooper S Countryman, FWD/4x2, white/Nanuq White Metallic, $24,500 cash, 13,500 mi) to the inventory. Same procedure: keep 4:5 aspect ratio, cover photo = front view, research real specs.
+
+Work Log:
+- 6 photos uploaded with mixed extensions: IMG_7727.PNG (actually a JPEG despite .PNG extension, 1290×1821), and 5 .JPG.jpeg files (IMG_9861, IMG_9863, IMG_9864, IMG_9875, IMG_9878, each 768×1024). Files were much smaller than previous uploads (~100-500KB vs 7-9MB) — already compressed.
+- Analyzed all 6 photos with z-ai vision (VLM). Results:
+  - IMG_7727.PNG = front 3/4, white Mini Countryman, high resolution (1290×1821), car faces left, shows grille + headlights + driver-side profile
+  - IMG_9861.JPG.jpeg = front 3/4, white Mini Countryman, car faces left, shows grille + headlights + hood + full driver-side profile (both wheels + roof rails + mirrors)
+  - IMG_9864.JPG.jpeg = front 3/4, white Mini Countryman, car faces right, shows grille + headlights + bumper + passenger-side wheel + side profile
+  - IMG_9863.JPG.jpeg = rear 3/4, white Mini Countryman
+  - IMG_9875.JPG.jpeg = interior, dashboard (black interior)
+  - IMG_9878.JPG.jpeg = interior, seats (black leather upholstery)
+  - IMG_7727.PNG chosen as PORTADA because it has the highest resolution (1290×1821, more than 2x the others) and shows a clean front 3/4 view.
+- Researched 2024 Mini Cooper S Countryman FWD specs via z-ai web_search (3 searches). Confirmed:
+  - Engine: 2.0L Turbo I4, 189 HP, 207 lb-ft torque
+  - Transmission: 7-speed Steptronic Sport Dual Clutch automatic (DCT)
+  - Drivetrain: Front-Wheel Drive (FWD, which the user confirmed as 4x2)
+  - Fuel economy (FWD): 24 city / 33 highway / 28 combined MPG
+  - Color: Nanuq White Metallic (the official Mini white — confirmed from the 2024 Countryman color palette: Momentum Grey, Melting Silver III, Nanuq White Metallic, Sage Green, Chili Red, Midnight Black II, British Racing Green)
+  - Features: 8.8" central touchscreen (iconic round MINI design), dual-panel panoramic glass sunroof, Apple CarPlay, MINI Driving Modes, LED headlights, back-up camera, MINI Connected
+- Created scripts/process-mini.mjs: processes 6 source photos to WebP 800×1000 (4:5) with sharp, cover fit, quality 82. IMPORTANT: removed withoutEnlargement:true because 5 of the 6 photos are 768×1024 (smaller than the 800×1000 target) — a 4% upscale is imperceptible in WebP.
+- Ran the script: 6 WebP files created (71.9 + 129.1 + 102.5 + 119.4 + 92.9 + 70.2 = 586.0KB total, all 800×1000).
+- Added the Mini to the CARS array in script.js (id:6, type:'suv', numPhotos:6, featured:true — it's practically new with low mileage and a premium brand).
+- The Mini is the first SUV in the inventory; the filter pills now show "Todos 6", "SUV 1", "Sedanes 5".
+
+Verification (Agent Browser + VLM):
+- Inventory grid now shows 6 cars: Honda Civic Sport, Toyota Corolla Nightshade, Toyota Camry XSE, Chevrolet Malibu LT, Toyota Camry LE, MINI Cooper S Countryman.
+- Mini card cover photo = /autos/06-mini-cooper-s-countryman/1.webp, 800×1000 (4:5 exact), loads locally. VLM confirmed: "cover photo shows the front of a white compact SUV".
+- Mini card: badges "Seminuevo" + "NUEVO INGRESO", featured:true (yellow border), price $24,500, monthly ≈ $467/mes, specs (13,500 mi · 7 velocidades DCT · Gasolina 28 MPG · Delantera FWD · 4x2).
+- Modal opens with 6-photo gallery, all 6 load locally, all 4:5 (800×1000), counter "1/6".
+- Modal specs complete: 2024, 13,500 mi, 2.0L Turbo I4 · 189 HP, 7 velocidades DCT, Delantera (FWD · 4x2), Gasolina · 28 MPG, Nanuq White Metallic, Seminuevo.
+- Modal features chips: Techo panorámico doble, Pantalla central 8.8", CarPlay / Android Auto, 7-Speed Dual Clutch, Modos de manejo MINI, Cámara de retroceso.
+- VLM confirmed modal: "2024 MINI Cooper S Countryman, front of white compact SUV, $24,500, 13,500 mi, gallery counter 1/6".
+- Filter pills correctly show SUV count = 1 (the Mini).
+- The 5 existing cars still display correctly (no regressions).
+- Lint clean.
+
+Stage Summary:
+- New car 2024 MINI Cooper S Countryman added to inventory with real researched specs.
+- 6 photos processed to 4:5 WebP (586KB total), cover = front 3/4 high-res view of white Mini.
+- First SUV in the inventory (type:'suv'); filter pills updated automatically.
+- Inventory now: 6 cars (Honda Civic, Toyota Corolla, Toyota Camry XSE, Chevrolet Malibu, Toyota Camry LE, MINI Cooper S Countryman). Total image weight: 31 WebP files (8+5+4+5+6+6) = ~4.5MB.

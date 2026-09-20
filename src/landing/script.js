@@ -83,7 +83,17 @@ const CARS = [
    cond:'Seminuevo', badge:'NUEVO INGRESO', featured:false,
    photos:[], numPhotos:6,
    desc:'El Camry en su versión más accesible: el LE. Motor 2.5L Dynamic Force de 203 HP con transmisión automática de 8 velocidades — la misma planta motriz del XSE pero a precio de entrada. Blizzard Pearl sobre interior beige, Toyota Safety Sense P de serie (frenado automático, crucero adaptativo, alerta de carril) y 39 MPG en autopista. 88 mil millas en un 2.5L Toyota son apenas el calentamiento: este bloque está hecho para pasar de las 300 mil. El sedán que no falla, al precio que sí califica.',
-   feats:['Toyota Safety Sense P','Frenado automático de emergencia','Crucero adaptativo','Bi-LED headlights','CarPlay / Android Auto','Cámara de retroceso']}
+   feats:['Toyota Safety Sense P','Frenado automático de emergencia','Crucero adaptativo','Bi-LED headlights','CarPlay / Android Auto','Cámara de retroceso']},
+
+  {id:6, folder:'06-mini-cooper-s-countryman',
+   year:2024, make:'MINI', model:'Cooper S Countryman', type:'suv',
+   price:24500, miles:13500,
+   trans:'7 velocidades DCT', fuel:'Gasolina · 28 MPG', drive:'Delantera (FWD · 4x2)',
+   engine:'2.0L Turbo I4 · 189 HP', ext:'Nanuq White Metallic',
+   cond:'Seminuevo', badge:'NUEVO INGRESO', featured:true,
+   photos:[], numPhotos:6,
+   desc:'El Countryman S es el MINI que creció sin perder el alma. Motor 2.0L Turbo de 189 HP y 207 lb-ft con transmisión de doble embrague de 7 velocidades — 0-60 en 7.1 segundos con la agilidad kart-like que define a la marca. Nanuq White Metallic sobre interior negro, techo panorámico de doble panel, pantalla central de 8.8" con el icónico diseño redondo MINI, CarPlay y modos de manejo. Solo 13,500 millas: prácticamente nuevo, con el atractivo de un SUV compacto premium a precio de seminuevo.',
+   feats:['Techo panorámico doble','Pantalla central 8.8"','CarPlay / Android Auto','7-Speed Dual Clutch','Modos de manejo MINI','Cámara de retroceso']}
 ];
 
 /* ================= SILUETAS (respaldo de autos sin fotos) ================= */
