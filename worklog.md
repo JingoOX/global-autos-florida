@@ -299,3 +299,47 @@ Stage Summary:
 - 6 photos processed to 4:5 WebP (586KB total), cover = front 3/4 high-res view of white Mini.
 - First SUV in the inventory (type:'suv'); filter pills updated automatically.
 - Inventory now: 6 cars (Honda Civic, Toyota Corolla, Toyota Camry XSE, Chevrolet Malibu, Toyota Camry LE, MINI Cooper S Countryman). Total image weight: 31 WebP files (8+5+4+5+6+6) = ~4.5MB.
+
+---
+Task ID: 8
+Agent: main (Z.ai Code)
+Task: Add a new car (2024 Toyota Camry XSE V6, red/Ruby Flare Pearl, $25,500, 70,000 mi) to the inventory. Same procedure: keep 4:5 aspect ratio, cover photo = front view, research real specs.
+
+Work Log:
+- 6 photos uploaded with .JPG.jpeg extension: IMG_4742, IMG_4743, IMG_4744, IMG_4745, IMG_4753, IMG_4759. The `file` command showed "1x1" (EXIF thumbnail) but sharp revealed real dimensions: 5 photos at 3024×4032 (portrait), IMG_4744 at 4032×3024 (landscape — interior dashboard), IMG_4759 at 768×1024 (smaller — interior rear seats).
+- Analyzed all 6 photos with z-ai vision (VLM). Results:
+  - IMG_4745 = front 3/4, red Camry, car faces right, shows grille + headlights + full driver-side profile (both wheels + doors + windows + mirrors) → PORTADA (foto 1)
+  - IMG_4742 = straight front (head-on), red Camry, shows full front fascia (grille + headlights + hood + windshield) but no wheels/side
+  - IMG_4743 = rear 3/4, red Camry XSE
+  - IMG_4744 = interior dashboard, black interior (landscape 4032×3024)
+  - IMG_4753 = interior front seats, black leather, red Camry
+  - IMG_4759 = interior rear seats, black leather, red Camry (768×1024)
+  - IMG_4745 chosen as PORTADA because it shows the front grille AND the full side profile with both wheels — consistent with the cover style of all previous cars.
+- Researched 2024 Toyota Camry XSE V6 specs via z-ai web_search (3 searches). Confirmed:
+  - Engine: 3.5L V6 (24-valve DOHC), 301 HP @ 6600 RPM, 267 lb-ft torque
+  - Transmission: 8-speed automatic (Direct Shift-8AT)
+  - Drivetrain: Front-Wheel Drive (FWD)
+  - Fuel economy (XSE V6 FWD): 22 city / 32 highway / 26 combined MPG
+  - Color: Ruby Flare Pearl (the official Toyota red pearl — confirmed from 2024 Camry color palette)
+  - Features: panoramic glass roof with front power tilt/slide moonroof, JBL Audio Plus with 9 speakers + subwoofer, 9-inch touchscreen, head-up display (10-inch full color), Toyota Safety Sense 2.5+, heated/ventilated leather seats, 19-inch alloy wheels
+  - Notable: The XSE V6 was discontinued after 2024 (the 2025 Camry is hybrid-only), making this the last opportunity for a factory V6 Camry.
+- Created scripts/process-camry-v6.mjs: processes 6 source photos to WebP 800×1000 (4:5) with sharp, cover fit, quality 82. Handles mixed orientations (portrait + landscape) and mixed resolutions (3024×4032 + 768×1024) with conditional withoutEnlargement.
+- Ran the script: 6 WebP files created (118.2 + 105.8 + 119.7 + 94.1 + 140.9 + 89.9 = 668.5KB total, all 800×1000).
+- Added the Camry XSE V6 to the CARS array in script.js (id:7, type:'sedan', numPhotos:6, featured:true, badge:'V6 · NUEVO INGRESO'). The badge highlights the V6 distinction since there's already a 2020 Camry XSE (4-cylinder) in the inventory.
+
+Verification (Agent Browser + VLM):
+- Inventory grid now shows 7 cars: Honda Civic Sport, Toyota Corolla Nightshade, Toyota Camry XSE (2020), Chevrolet Malibu LT, Toyota Camry LE, MINI Cooper S Countryman, Toyota Camry XSE V6 (2024).
+- Camry V6 card cover photo = /autos/07-toyota-camry-xse-v6/1.webp, 800×1000 (4:5 exact), loads locally. VLM confirmed: "cover photo shows the front of a red sedan".
+- Camry V6 card: badges "Seminuevo" + "V6 · NUEVO INGRESO", featured:true (yellow border), price $25,500, monthly ≈ $486/mes, specs (70,000 mi · Automática 8 velocidades · Gasolina 26 MPG · Delantera FWD).
+- Modal opens with 6-photo gallery, all 6 load locally, all 4:5 (800×1000), counter "1/6".
+- Modal specs complete: 2024, 70,000 mi, 3.5L V6 · 301 HP, Automática 8 velocidades, Delantera (FWD), Gasolina · 26 MPG, Ruby Flare Pearl (Rojo), Seminuevo.
+- Modal features chips: Motor 3.5L V6 · 301 HP, Techo panorámico de vidrio, JBL · 9 parlantes + sub, Head-up display 10", Toyota Safety Sense 2.5+, Rines 19" aleación.
+- VLM confirmed modal: "2024 Toyota Camry XSE V6, front of red sedan, $25,500, 70,000 mi, gallery counter 1/6".
+- The 6 existing cars still display correctly (no regressions).
+- Lint clean.
+
+Stage Summary:
+- New car 2024 Toyota Camry XSE V6 added to inventory with real researched specs.
+- 6 photos processed to 4:5 WebP (668.5KB total), cover = front 3/4 view of red Camry.
+- Featured:true with distinctive "V6 · NUEVO INGRESO" badge to differentiate from the 2020 Camry XSE (4-cylinder) already in inventory.
+- Inventory now: 7 cars. Total image weight: 37 WebP files (8+5+4+5+6+6+6) = ~5.2MB.

@@ -93,7 +93,17 @@ const CARS = [
    cond:'Seminuevo', badge:'NUEVO INGRESO', featured:true,
    photos:[], numPhotos:6,
    desc:'El Countryman S es el MINI que creció sin perder el alma. Motor 2.0L Turbo de 189 HP y 207 lb-ft con transmisión de doble embrague de 7 velocidades — 0-60 en 7.1 segundos con la agilidad kart-like que define a la marca. Nanuq White Metallic sobre interior negro, techo panorámico de doble panel, pantalla central de 8.8" con el icónico diseño redondo MINI, CarPlay y modos de manejo. Solo 13,500 millas: prácticamente nuevo, con el atractivo de un SUV compacto premium a precio de seminuevo.',
-   feats:['Techo panorámico doble','Pantalla central 8.8"','CarPlay / Android Auto','7-Speed Dual Clutch','Modos de manejo MINI','Cámara de retroceso']}
+   feats:['Techo panorámico doble','Pantalla central 8.8"','CarPlay / Android Auto','7-Speed Dual Clutch','Modos de manejo MINI','Cámara de retroceso']},
+
+  {id:7, folder:'07-toyota-camry-xse-v6',
+   year:2024, make:'Toyota', model:'Camry XSE V6', type:'sedan',
+   price:25500, miles:70000,
+   trans:'Automática 8 velocidades', fuel:'Gasolina · 26 MPG', drive:'Delantera (FWD)',
+   engine:'3.5L V6 · 301 HP', ext:'Ruby Flare Pearl (Rojo)',
+   cond:'Seminuevo', badge:'V6 · NUEVO INGRESO', featured:true,
+   photos:[], numPhotos:6,
+   desc:'El Camry XSE V6 — la versión que los puristas buscan. Motor 3.5L V6 de 301 HP y 267 lb-ft con transmisión automática de 8 velocidades: 0-60 en 5.8 segundos, el sedán japonés más rápido de su clase. Ruby Flare Pearl sobre cuero negro, techo panorámico de vidrio, JBL con 9 parlantes + subwoofer, head-up display de 10" y Toyota Safety Sense 2.5+ completo. El XSE V6 fue descontinuado después de 2024 — esta es la última oportunidad de tener el Camry V6 de fábrica. 70 mil millas en un 3.5L Toyota son apenas el primer tercio de su vida útil.',
+   feats:['Motor 3.5L V6 · 301 HP','Techo panorámico de vidrio','JBL · 9 parlantes + sub','Head-up display 10"','Toyota Safety Sense 2.5+','Rines 19" aleación']}
 ];
 
 /* ================= SILUETAS (respaldo de autos sin fotos) ================= */
