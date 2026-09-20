@@ -50,8 +50,7 @@ const CARS = [
      'https://z-cdn-media.chatglm.cn/files/c3649309-0097-49e6-be4c-d55732b69426.jpg?auth_key=1889873116-62379ecc83484d4c969c53e193f49fbe-0-c9c21bf9a9e32050f9f7999a5a48697e',
      'https://z-cdn-media.chatglm.cn/files/4b7adec0-8e78-417a-b723-e99224c46eef.jpg?auth_key=1889873116-95d24f8daec64cce9fd8acc034fd21ce-0-0c53f7ecd028d8c59dd2fd97f41bb2f8',
      'https://z-cdn-media.chatglm.cn/files/6832dd11-367c-4101-b37f-2adc34d00541.jpg?auth_key=1889873116-38e1c1ff4b2248619f6c9e8b6409f169-0-2c2fef53d5203193cbdb5848f59dd19c',
-     'https://z-cdn-media.chatglm.cn/files/130b16d6-cc98-4f64-b2fd-a7c3ad48df84.jpg?auth_key=1889873116-d426c32be92d4b13b91410f4d9f186bb-0-eb48891793a8d5fdaeaca7a4b9a761c8',
-     'https://z-cdn-media.chatglm.cn/files/d80c2d9b-4b9a-4f53-a790-5c82e98dd94e.jpg?auth_key=1889873116-27a0a57c131f4c0a9b4d91bdf565c6cd-0-04110bd8bea77b9b826f06990709fc1a'
+     'https://z-cdn-media.chatglm.cn/files/130b16d6-cc98-4f64-b2fd-a7c3ad48df84.jpg?auth_key=1889873116-d426c32be92d4b13b91410f4d9f186bb-0-eb48891793a8d5fdaeaca7a4b9a761c8'
    ],
    desc:'La edición que los coleccionistas del Corolla buscan: paquete Nightshade de fábrica con rines 18" negro brillante, spoiler, retrovisores, manijas y emblemas ahumados — el look "blanco sobre negro" sin tocarle nada. Motor 2.0L de 169 HP, Toyota Safety Sense 2.0 completo y 34 MPG. 81 mil millas en un Corolla son apenas el calentamiento: este motor está hecho para triplicarlas.',
    feats:['Edición Nightshade · acentos negro','Rines 18" negro brillante','Toyota Safety Sense 2.0','CarPlay / Amazon Alexa','Crucero adaptativo','Doble escape']}

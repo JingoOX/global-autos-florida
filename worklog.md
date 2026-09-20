@@ -78,3 +78,40 @@ Stage Summary:
 - Font system upgraded per skill's "Sports/Fitness" pairing: Archivo Black (display) + Barlow Condensed (labels) + Barlow (body, upgraded from Archivo).
 - Visual distribution fixed: hero is content-driven (no more 92vh void), section rhythm is consistent (80/64/56px responsive), .bk-h internal gaps reduced 34%, body text line-height/line-length now follow skill UX best practices (1.65-1.7, 62ch).
 - All interactivity preserved (modal, filters, search, forms, mobile menu). VLM evaluation: 9/10.
+
+---
+Task ID: 3
+Agent: main (Z.ai Code)
+Task: Optimize image loading — download remote images, convert to optimized WebP locally, eliminate 404 fallback chains and oversized payloads.
+
+Work Log:
+- Audited current image performance via Agent Browser + Performance API. Found 3 critical issues:
+  1. Fallback chain waste: each image tried local path first (404 ~530ms) then fell to remote URL — 2 wasted requests per image.
+  2. Oversized images: car photos were 3024×3780 (~7-10MB each) displayed at 438px; hero was 1536×1024 displayed at 640px.
+  3. Temporary remote URLs with expiring auth_key params (chatglm.cn) — would break over time.
+- Confirmed `sharp` ^0.34.3 was already installed in the project.
+- Created `scripts/download-images.mjs` — a Node.js script using sharp + fetch that:
+  - Downloads each remote image (hero from body.html data-fb chain; car photos from script.js CARS[].photos arrays).
+  - Converts to WebP: hero resized to width 1280 (quality 82, keeps aspect ratio for the cutout blend-mode), car photos resized to 800×1000 with cover fit (quality 80, 2x retina for the 438px card + modal gallery).
+  - Saves to public/hero-car.webp and public/autos/NN-folder/N.webp.
+- Ran the script. Results:
+  - Hero: 1,784KB PNG → 171KB WebP (−90%)
+  - Honda Civic (8 photos): ~52MB total → 1,189KB total (−98%)
+  - Toyota Corolla (5 of 6 photos): photo 6 returned HTTP 403 (invalid auth_key for that file) → removed it from the CARS array in script.js so the gallery shows 5 photos cleanly instead of a broken image.
+  - Total 14 WebP files: 1,869KB
+- Fixed page.tsx: moved file reads (styles.css, body.html, script.js) from module-level into the component function so dev-mode edits to landing files are picked up without needing a full module re-evaluation. Previously the server cached the old script.js (with 6 Toyota photos) even after editing.
+- Verified end-to-end with Agent Browser:
+  - All 3 visible images (hero + 2 car cards) load from LOCAL same-origin (localhost), 0 remote fallbacks.
+  - Honda modal gallery: all 8 photos load from local WebP (800×1000 each), 0 failures.
+  - Toyota modal gallery: 5 photos load from local WebP, all loaded, all local.
+  - 0 image 404s on the current page load.
+  - Hero image visual quality confirmed via VLM: yellow sports car displays correctly with the screen blend-mode effect, no visible compression artifacts.
+  - Lint clean.
+
+Stage Summary:
+- 14 optimized WebP images now served locally from public/ (same-origin, no CDN dependency, no expiring auth_keys).
+- Weight reduction for 3 above-the-fold images: ~15,931KB → 395KB (−97%).
+- Eliminated all 404 fallback requests (was 2 per image = 6 wasted requests on initial load).
+- All interactivity preserved (modal galleries work with local images).
+- Script `scripts/download-images.mjs` is reusable: re-run it if remote images change (it overwrites local files).
+- To add a new car: drop WebP photos in public/autos/NN-folder/ and add the car to the CARS array in script.js — the imgFB fallback chain handles the rest automatically.
