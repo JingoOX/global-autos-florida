@@ -388,3 +388,48 @@ Stage Summary:
 - 5 photos processed to 4:5 WebP (270.5KB total), cover = front 3/4 view of white Tacoma.
 - First pickup in the inventory (type:'pickup'); Pickups filter pill appeared automatically.
 - Inventory now: 8 cars (6 sedans + 1 SUV + 1 pickup). Total image weight: 42 WebP files (8+5+4+5+6+6+6+5) = ~5.5MB.
+
+---
+Task ID: 10
+Agent: main (Z.ai Code)
+Task: Add a new car (2018 Honda CR-V Touring, red/Basque Red Pearl II, $19,500, 62,062 mi, AWD) to the inventory. Same procedure: keep 4:5 aspect ratio, cover photo = front view, research real specs. Second SUV in the inventory.
+
+Work Log:
+- 6 photos uploaded: IMG_9898, IMG_9899, IMG_9902, IMG_9907, IMG_9909, IMG_9911 (all .JPG.jpeg, 768×1024, ~82-172KB each — already compressed).
+- Analyzed all 6 photos with z-ai vision (VLM). Results:
+  - IMG_9899 = front 3/4, red Honda CR-V, SUV faces right, shows grille + headlights + hood + driver-side profile (doors + windows + roof rails) + both front and rear driver-side wheels → PORTADA (foto 1)
+  - IMG_9898 = front 3/4, red CR-V, SUV faces left, shows grille + headlights + hood + driver-side profile + front wheel (rear wheel partially seen)
+  - IMG_9902 = rear 3/4, red CR-V
+  - IMG_9907 = interior seats, beige/tan interior
+  - IMG_9909 = interior seats, light gray leather upholstery
+  - IMG_9911 = interior dashboard, beige/tan interior
+  - IMG_9899 chosen as PORTADA because it shows both front and rear wheels on the driver's side — consistent with the cover style of all previous cars.
+- Researched 2018 Honda CR-V Touring specs via z-ai web_search (3 searches). Confirmed:
+  - Engine: 1.5L Turbo DOHC 16-valve I4, 190 HP @ 5600 RPM, 179 lb-ft torque (turbo engine standard on EX and above; LX has 2.4L NA 184 HP)
+  - Transmission: Continuously Variable Transmission (CVT)
+  - Drivetrain: AWD with Intelligent Control System (Touring trim comes standard with AWD; FWD available on lower trims)
+  - Fuel economy (1.5L Turbo AWD): 27 city / 33 highway / 30 combined MPG (EPA)
+  - Color: Basque Red Pearl II (the official Honda red pearl — confirmed from 2018 CR-V Touring specs)
+  - Interior: leather-trimmed seats (Ivory, Black, or Gray; the photos show light gray/beige)
+  - Features: Honda Sensing suite standard (CMBS, adaptive cruise, lane keeping, road departure mitigation), Honda Satellite-Linked Navigation with HD Digital Traffic, panoramic roof, heated front seats, power tailgate, 7-inch touchscreen with CarPlay/Android Auto, 332-watt premium audio
+- Created scripts/process-crv.mjs: processes 6 source photos to WebP 800×1000 (4:5) with sharp, cover fit, quality 82. All photos are 768×1024 so a 4% upscale is applied (imperceptible in WebP).
+- Ran the script: 6 WebP files created (128.9 + 112.7 + 114.4 + 61.5 + 40.1 + 53.0 = 510.6KB total, all 800×1000).
+- Added the CR-V to the CARS array in script.js (id:9, type:'suv', numPhotos:6, featured:true, badge:'NUEVO INGRESO'). The CR-V is the second SUV in the inventory (after the MINI Countryman).
+
+Verification (Agent Browser + VLM):
+- Inventory grid now shows 9 cars: Honda Civic Sport, Toyota Corolla Nightshade, Toyota Camry XSE (2020), Chevrolet Malibu LT, Toyota Camry LE, MINI Cooper S Countryman, Toyota Camry XSE V6 (2024), Toyota Tacoma SR5, Honda CR-V Touring.
+- Filter pills now show "Todos 9", "SUV 2", "Pickups 1", "Sedanes 6" — the SUV count increased to 2 (MINI + CR-V).
+- CR-V card cover photo = /autos/09-honda-crv-touring/1.webp, 800×1000 (4:5 exact), loads locally. VLM confirmed: "front-side 3/4 view of a red SUV" (the correct cover angle), price $19,500 visible, yellow featured border present.
+- CR-V card: badges "Seminuevo" + "NUEVO INGRESO", featured:true (yellow border), price $19,500, monthly ≈ $372/mes, specs (62,062 mi · CVT · Gasolina 30 MPG · AWD · 4x4).
+- Modal opens with 6-photo gallery, all 6 load locally, all 4:5 (800×1000), counter "1/6".
+- Modal specs complete: 2018, 62,062 mi, 1.5L Turbo I4 · 190 HP, CVT, AWD · 4x4, Gasolina · 30 MPG, Basque Red Pearl II (Rojo), Seminuevo.
+- Modal features chips: Honda Sensing completo, AWD · Intelligent Control, Techo panorámico, Navegación satelital Honda, Asientos de cuero calefactados, Puerta trasera eléctrica.
+- VLM confirmed modal: "2018 Honda CR-V Touring, front 3/4 of red SUV, $19,500, 62,062 mi, gallery counter 1/6".
+- The 8 existing cars still display correctly (no regressions).
+- Lint clean.
+
+Stage Summary:
+- New car 2018 Honda CR-V Touring added to inventory with real researched specs.
+- 6 photos processed to 4:5 WebP (510.6KB total), cover = front 3/4 view of red CR-V.
+- Second SUV in the inventory (type:'suv'); SUV filter count now shows 2.
+- Inventory now: 9 cars (6 sedans + 2 SUVs + 1 pickup). Total image weight: 48 WebP files (8+5+4+5+6+6+6+5+6) = ~6.0MB.

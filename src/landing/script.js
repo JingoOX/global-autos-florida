@@ -113,7 +113,17 @@ const CARS = [
    cond:'Seminuevo', badge:'NUEVO INGRESO', featured:true,
    photos:[], numPhotos:5,
    desc:'La Tacoma SR5 es la pickup mediana que conserva su valor mejor que cualquier otra en América — y esta está como nueva. Motor 2.7L I4 de 159 HP con transmisión automática de 6 velocidades y tracción trasera (4x2), la combinación más eficiente de la línea. Blizzard Pearl sobre interior gris, cama de 5 pies forrada, Toyota Safety Sense P de serie y la legendaria confiabilidad del chasis Tacoma que mantiene su valor año tras año. 47 mil millas apenas: este 2.7L está hecho para pasar de las 300 mil con el mantenimiento al día. La pickup que trabaja y conserva su valor.',
-   feats:['Cama 5 pies forrada','Toyota Safety Sense P','CarPlay / Android Auto','Pantalla 7" táctil','Cámara de retroceso','Rines 16" aleación']}
+   feats:['Cama 5 pies forrada','Toyota Safety Sense P','CarPlay / Android Auto','Pantalla 7" táctil','Cámara de retroceso','Rines 16" aleación']},
+
+  {id:9, folder:'09-honda-crv-touring',
+   year:2018, make:'Honda', model:'CR-V Touring', type:'suv',
+   price:19500, miles:62062,
+   trans:'CVT', fuel:'Gasolina · 30 MPG', drive:'AWD · 4x4',
+   engine:'1.5L Turbo I4 · 190 HP', ext:'Basque Red Pearl II (Rojo)',
+   cond:'Seminuevo', badge:'NUEVO INGRESO', featured:true,
+   photos:[], numPhotos:6,
+   desc:'El CR-V Touring es el SUV compacto más vendido de América en su versión más equipada. Motor 1.5L Turbo de 190 HP y 179 lb-ft con CVT y tracción AWD con Intelligent Control System — la combinación que entrega 30 MPG combinado sin sacrificar tracción en lluvia o grava. Basque Red Pearl II sobre cuero gris, Honda Sensing completo (frenado automático, crucero adaptativo, alerta de carril), navegación satelital Honda, techo panorámico, asientos delanteros calefactados y puerta trasera eléctrica. 62 mil millas apenas: este 1.5L Turbo está hecho para pasar de las 200 mil. El SUV familiar que lo tiene todo.',
+   feats:['Honda Sensing completo','AWD · Intelligent Control','Techo panorámico','Navegación satelital Honda','Asientos de cuero calefactados','Puerta trasera eléctrica']}
 ];
 
 /* ================= SILUETAS (respaldo de autos sin fotos) ================= */
