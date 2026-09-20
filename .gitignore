@@ -52,3 +52,14 @@ prompt
 server.log
 # Skills directory
 /skills/
+# User uploaded photos (not part of source code)
+/upload/
+
+# Tool results (temporary)
+/tool-results/
+
+# Worklog (internal documentation)
+/worklog.md
+
+# Scripts (one-off processing scripts, not needed in repo)
+/scripts/
