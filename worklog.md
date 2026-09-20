@@ -641,3 +641,36 @@ Stage Summary:
 - Both toggles persist preferences across reloads via localStorage.
 - Light theme is fully readable across all sections.
 - Inventory (10 cars), modal galleries, and all interactivity preserved — no regressions.
+
+---
+Task ID: 14
+Agent: main (Z.ai Code)
+Task: Fix light mode bugs — hero car image invisible + brand logos invisible in light mode. Make logos black in light mode and make the hero car visible.
+
+Work Log:
+- Analyzed the user's screenshot with VLM — identified 2 issues in light mode:
+  1. Hero car image (yellow sports car) was invisible/washed out
+  2. Brand logos in the marquee were invisible (white on white)
+- Root cause analysis:
+  - Hero image: `.hero-img` uses `mix-blend-mode: screen` (designed for dark backgrounds — makes dark pixels transparent, shows bright pixels). On a light background, `screen` blend mode makes everything lighter = invisible.
+  - Brand logos: loaded from `cdn.simpleicons.org/SLUG/ffffff` (white icons). On white/light background, white = invisible.
+  - Additional discovery: in this environment, the simpleicons CDN images don't load at all (24/24 failed), so the fallback text names (`.mq-name`) are shown instead. These were styled with `-webkit-text-stroke: 1px #D0D0C6` (light gray outline) — also nearly invisible on white.
+- Checked the hero image alpha channel: confirmed it has 4 channels with transparent background (the car is a cutout). This means `mix-blend-mode: normal` will work — the alpha channel handles transparency, no need for `screen` blend.
+- Applied 5 CSS fixes (all `html.light` prefixed so dark mode is unaffected):
+  1. `html.light .hero-img { mix-blend-mode: normal; }` — car image shows via alpha transparency on light bg
+  2. `html.light .hero-img-wrap::after { mix-blend-mode: normal; opacity: .12; }` — tone down the shine sweep effect
+  3. `html.light .hero-floor { opacity: .4; }` — tone down the yellow glow under the car
+  4. `html.light .mq-logo img:not(.lg-y) { filter: brightness(0) opacity(0.7); }` — make loaded white logos black (for when CDN works)
+  5. `html.light .mq-name { -webkit-text-stroke: 1px #3A3A33; color: #3A3A33; }` — make fallback text names dark/visible (changed from #D0D0C6 light gray to #3A3A33 dark gray with solid fill)
+
+Verification (Agent Browser + VLM):
+- Light mode hero: VLM confirmed "bright yellow sports car visible in the center... bold black racing stripes... aggressive styling". Rated 8/10.
+- Light mode marquee: VLM confirmed "brand names (Toyota, Honda, Nissan, Jeep, Dodge, BMW) are visible and dark/black".
+- Dark mode regression check: confirmed no changes — hero image still uses `mix-blend-mode: screen`, mq-name stroke still `#3E3E38`, background still `rgb(7,7,7)`. VLM confirmed "yellow sports car clearly visible, no regressions".
+- Computed style verification: light mode `mixBlendMode: normal` applied, dark mode `mixBlendMode: screen` preserved.
+- Lint clean.
+
+Stage Summary:
+- 2 light mode bugs fixed: hero car image now visible (mix-blend-mode normal + alpha transparency), brand logos now dark/visible (filter brightness(0) for images + dark stroke for fallback text).
+- Dark mode completely unaffected (all fixes are html.light prefixed).
+- 5 CSS rules added to the light theme section of styles.css.

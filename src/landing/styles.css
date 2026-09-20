@@ -570,8 +570,17 @@ html.light .hero-word{-webkit-text-stroke:1px rgba(0,0,0,.10)}
 html.light .scroll-cue{color:#999}
 
 html.light .marquee{background:#FFFFFF;border-block:1px solid var(--line)}
-html.light .mq-name{-webkit-text-stroke:1px #D0D0C6}
+html.light .mq-name{-webkit-text-stroke:1px #3A3A33;color:#3A3A33}
 html.light .mq-sep{background:var(--amber)}
+/* Fix: brand logos load as white (/ffffff) — invisible on light bg. Make them black. */
+html.light .mq-logo img:not(.lg-y){filter:brightness(0) opacity(0.7)}
+html.light .mq-logo:hover img:not(.lg-y){filter:brightness(0) opacity(0)}
+/* Fix: hero car image uses mix-blend-mode:screen (designed for dark bg). On light bg
+   it becomes invisible. Switch to normal — the image has alpha transparency so the
+   car cutout shows correctly on the light background. */
+html.light .hero-img{mix-blend-mode:normal}
+html.light .hero-img-wrap::after{mix-blend-mode:normal;opacity:.12}
+html.light .hero-floor{opacity:.4}
 
 html.light .btn-o{border:1px solid #D0D0C6;color:var(--text)}
 html.light .btn-o:hover{border-color:var(--amber);color:var(--amber)}
