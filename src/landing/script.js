@@ -554,16 +554,23 @@ const BRANDS = [
   {slug:'audi',      name:'AUDI'},
   {slug:'lexus',     name:'LEXUS'}
 ];
-const SI = 'https://cdn.simpleicons.org/';
+/* Logos SVG locales en /public/marquees/ — ya no dependen del CDN simpleicons.org.
+   Los SVGs tienen fill="currentColor", así que al inlinerlos heredan el color del
+   contenedor (.mq-logo). En modo oscuro = texto claro, en modo claro = texto oscuro. */
 const mqItem = b => `
-  <span class="mq-logo">
-    <img src="${SI}${b.slug}/ffffff" alt="${b.name}" decoding="async"
-         onerror="this.closest('.mq-logo').classList.add('fallback');this.alt=''">
-    <img class="lg-y" src="${SI}${b.slug}/FFCE00" alt="" aria-hidden="true" decoding="async">
+  <span class="mq-logo" data-svg="/marquees/${b.slug}.svg" data-name="${b.name}">
     <span class="mq-name">${b.name}</span>
   </span><span class="mq-sep"></span>`;
 const mqHalf = BRANDS.map(mqItem).join('');
 document.getElementById('mqTrack').innerHTML = `<div class="mq-half">${mqHalf}</div><div class="mq-half">${mqHalf}</div>`;
+/* Inlinear los SVGs para que hereden currentColor */
+document.querySelectorAll('.mq-logo[data-svg]').forEach(async (el) => {
+  try {
+    const res = await fetch(el.dataset.svg);
+    const svg = await res.text();
+    el.insertAdjacentHTML('afterbegin', svg);
+  } catch(e) { el.classList.add('fallback'); }
+});
 
 /* ================= HEADER / NAV ================= */
 const header = document.getElementById('header');

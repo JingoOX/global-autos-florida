@@ -144,15 +144,12 @@ header.scrolled .nav{padding-block:12px}
 .marquee:hover .mq-track{animation-play-state:paused}
 @keyframes mq{to{transform:translateX(-50%)}}
 .mq-half{display:flex;align-items:center;gap:64px;padding-right:64px}
-.mq-logo{position:relative;height:36px;display:flex;align-items:center;flex:none;cursor:default}
-.mq-logo img{height:36px;width:auto;display:block;transition:transform .3s cubic-bezier(.2,.7,.2,1),opacity .25s}
-.mq-logo .lg-y{position:absolute;top:0;left:0;opacity:0}
-.mq-logo:hover img{transform:scale(1.14)}
-.mq-logo:hover .lg-y{opacity:1}
-.mq-logo:hover img:not(.lg-y){opacity:0}
+.mq-logo{position:relative;height:36px;display:flex;align-items:center;flex:none;cursor:default;color:#C9C9C0;transition:color .25s}
+/* SVG inlineados heredan currentColor del .mq-logo */
+.mq-logo svg{height:36px;width:auto;display:block;transition:transform .3s cubic-bezier(.2,.7,.2,1),color .25s}
+.mq-logo:hover{color:var(--yellow)}
+.mq-logo:hover svg{transform:scale(1.14)}
 .mq-name{display:none;font-family:var(--ft);font-weight:700;font-size:26px;letter-spacing:3px;color:transparent;-webkit-text-stroke:1px #3E3E38;white-space:nowrap;line-height:36px}
-.mq-logo.fallback img{display:none}
-.mq-logo.fallback .mq-name{display:block}
 .mq-sep{width:9px;height:9px;flex:none;background:var(--amber);transform:rotate(45deg)}
 
 /* ============ STATS ============ */
@@ -570,11 +567,9 @@ html.light .hero-word{-webkit-text-stroke:1px rgba(0,0,0,.10)}
 html.light .scroll-cue{color:#999}
 
 html.light .marquee{background:#FFFFFF;border-block:1px solid var(--line)}
+html.light .mq-logo{color:#3A3A33}
 html.light .mq-name{-webkit-text-stroke:1px #3A3A33;color:#3A3A33}
 html.light .mq-sep{background:var(--amber)}
-/* Fix: brand logos load as white (/ffffff) — invisible on light bg. Make them black. */
-html.light .mq-logo img:not(.lg-y){filter:brightness(0) opacity(0.7)}
-html.light .mq-logo:hover img:not(.lg-y){filter:brightness(0) opacity(0)}
 /* Fix: hero car image uses mix-blend-mode:screen (designed for dark bg). On light bg
    it becomes invisible. Switch to normal — the image has alpha transparency so the
    car cutout shows correctly on the light background. */
