@@ -1,0 +1,644 @@
+<div id="progress"></div>
+
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <linearGradient id="g-shade" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fff" stop-opacity=".24"/>
+      <stop offset=".38" stop-color="#fff" stop-opacity="0"/>
+      <stop offset=".72" stop-color="#000" stop-opacity="0"/>
+      <stop offset="1" stop-color="#000" stop-opacity=".45"/>
+    </linearGradient>
+    <linearGradient id="g-glass" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1A1E24"/><stop offset="1" stop-color="#0A0D10"/>
+    </linearGradient>
+  </defs>
+</svg>
+
+
+<div class="topbar">
+  <div class="container">
+    <div class="tb-left" style="display:inline-flex;align-items:center;gap:8px">
+      <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      1054 American Way, Kissimmee, FL 34741
+    </div>
+    <div class="tb-right">
+      <a href="tel:+17863108889">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        786-310-8889
+      </a>
+      <span style="display:inline-flex;align-items:center;gap:8px">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+        Lun–Sáb 9AM–8PM · Dom 11AM–6PM
+      </span>
+      <a href="mailto:globalautosflorida@gmail.com">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 6l-10 7L2 6"/></svg>
+        globalautosflorida@gmail.com
+      </a>
+    </div>
+  </div>
+</div>
+
+
+<header id="header">
+  <div class="container nav">
+    <a href="#inicio" class="brand" aria-label="Global Autos Florida — inicio">
+      <svg class="brand-badge" viewBox="0 0 46 46" aria-hidden="true">
+        <path d="M23 3L43 23 23 43 3 23Z" fill="#0D0D0D" stroke="#FFCE00" stroke-width="2"/>
+        <path d="M14 30h18M15 27l3-8h10l3 8" fill="none" stroke="#FFCE00" stroke-width="1.6" stroke-linecap="round"/>
+        <circle cx="17" cy="28.5" r="2.2" fill="#FFCE00"/><circle cx="29" cy="28.5" r="2.2" fill="#FFCE00"/>
+      </svg>
+      <span class="brand-txt">
+        <span class="l1">GLOBAL <b>AUTOS</b></span>
+        <span class="l2">FLORIDA</span>
+      </span>
+    </a>
+    <nav class="nav-links" aria-label="Principal">
+      <a href="#inventario">Inventario</a>
+      <a href="#financiamiento">Financiamiento</a>
+      <a href="#broker">Broker</a>
+      <a href="#nosotros">Nosotros</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <div class="nav-cta">
+      <a class="nav-tel" href="tel:+17863108889">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        786-310-8889
+      </a>
+      <button class="burger" id="burger" aria-label="Abrir menú">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+
+<div id="navPanel" role="dialog" aria-label="Menú">
+  <button class="close" id="navClose" aria-label="Cerrar menú">
+    <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+  </button>
+  <a href="#inicio">Inicio</a>
+  <a href="#inventario">Inventario</a>
+  <a href="#financiamiento">Financiamiento</a>
+  <a href="#broker">Broker</a>
+  <a href="#nosotros">Nosotros</a>
+  <a href="#contacto">Contacto</a>
+</div>
+
+<main>
+
+<section class="hero" id="inicio">
+  <div class="hero-spot" id="heroSpot"></div>
+  <div class="hero-word" aria-hidden="true">GLOBAL AUTOS</div>
+  <div class="container hero-inner">
+    <div class="eyebrow">Kissimmee · Centro de Florida</div>
+    <h1>TU PRÓXIMO AUTO<br><em>EMPIEZA AQUÍ</em></h1>
+    <p class="hero-sub">Compra, cambia o financia tu próximo vehículo con el equipo que ya entregó más de 500 autos en Florida. Y si lo tuyo es el precio de subasta, somos tu broker de confianza. Sin letras pequeñas, sin vueltas.</p>
+    <div class="hero-ctas">
+      <a class="btn btn-y" href="#inventario">
+        Ver inventario
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M6 13l6 6 6-6"/></svg>
+      </a>
+      <a class="btn btn-o" href="#broker">Comprar en subasta</a>
+    </div>
+    <div class="hero-trust">
+      <span class="stars" aria-hidden="true">
+        <svg class="ic" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3l2.7 5.6 6.1.8-4.5 4.3 1.1 6-5.4-2.9-5.4 2.9 1.1-6L3.2 9.4l6.1-.8z"/></svg>
+        <svg class="ic" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3l2.7 5.6 6.1.8-4.5 4.3 1.1 6-5.4-2.9-5.4 2.9 1.1-6L3.2 9.4l6.1-.8z"/></svg>
+        <svg class="ic" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3l2.7 5.6 6.1.8-4.5 4.3 1.1 6-5.4-2.9-5.4 2.9 1.1-6L3.2 9.4l6.1-.8z"/></svg>
+        <svg class="ic" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3l2.7 5.6 6.1.8-4.5 4.3 1.1 6-5.4-2.9-5.4 2.9 1.1-6L3.2 9.4l6.1-.8z"/></svg>
+        <svg class="ic" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3l2.7 5.6 6.1.8-4.5 4.3 1.1 6-5.4-2.9-5.4 2.9 1.1-6L3.2 9.4l6.1-.8z"/></svg>
+      </span>
+      <b>4.9</b> en Google · 187 reseñas
+      <span class="sep"></span> +500 autos entregados
+      <span class="sep"></span> Aprobación de crédito en 24h
+    </div>
+  </div>
+
+  
+  <div class="hero-stage">
+    <div class="hero-img-wrap">
+      <img class="hero-img"
+           src="hero-car.webp"
+           data-fb="hero-car.png|https://z-cdn-media.chatglm.cn/files/1699507c-a544-47ca-af41-9bafe9cb145e.PNG?auth_key=1889873116-c161a264bcb1442992779dcb47298a24-0-c00b5733ce687aa0bef8b26fb62423f4|https://z-cdn-media.chatglm.cn/files/4446b21f-0603-489c-9fab-68e1fd0e35cf.png?auth_key=1889873116-c161a557bfffb46a99821efac64c08e0b-0-bd2034a74e7198c139b97c6572374ff7"
+           onerror="imgFB(this)"
+           alt="Auto deportivo amarillo con rayas negras y logotipo de Global Autos Florida"
+           fetchpriority="high" decoding="async">
+    </div>
+    <div class="hero-floor" aria-hidden="true"></div>
+  </div>
+
+  <div class="scroll-cue" aria-hidden="true">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
+  </div>
+</section>
+
+
+<div class="marquee" aria-hidden="true">
+  <div class="mq-track" id="mqTrack"></div>
+</div>
+
+
+<div class="stats">
+  <div class="container stats-grid">
+    <div class="stat reveal"><div class="num" data-count="500" data-suffix="+">0</div><div class="lbl">Autos entregados</div></div>
+    <div class="stat reveal"><div class="num" data-count="4.9" data-decimals="1">0</div><div class="lbl">Calificación Google</div></div>
+    <div class="stat reveal"><div class="num" data-count="187">0</div><div class="lbl">Reseñas verificadas</div></div>
+    <div class="stat reveal"><div class="num" data-count="24" data-suffix="h">0</div><div class="lbl">Máx. aprobación de crédito</div></div>
+  </div>
+</div>
+
+
+<section id="inventario">
+  <div class="container">
+    <div class="inv-head reveal">
+      <div>
+        <div class="eyebrow"><span class="idx">01 /</span> Inventario</div>
+        <h2>A la espera de<br>un nuevo dueño</h2>
+      </div>
+      <p class="sub" style="margin-top:0">Cada vehículo pasa una inspección de 150 puntos antes de llegar aquí. Precio claro, mensualidad estimada y financiamiento disponible.</p>
+    </div>
+
+    <div class="toolbar reveal">
+      <div class="search">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+        <input type="search" id="q" placeholder="Buscar marca o modelo…" aria-label="Buscar vehículo">
+      </div>
+      <div class="sort">
+        <select id="sort" aria-label="Ordenar inventario">
+          <option value="featured">Destacados</option>
+          <option value="price-asc">Precio · menor a mayor</option>
+          <option value="price-desc">Precio · mayor a menor</option>
+          <option value="year-desc">Año · más reciente</option>
+          <option value="miles-asc">Millaje · menor</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="pills reveal" id="pills" role="tablist" aria-label="Filtrar por categoría"></div>
+    <div class="count-line"><b id="count">0</b> <span id="countNoun">vehículos</span> disponibles</div>
+
+    <div class="grid" id="carsGrid"></div>
+
+    <div class="empty" id="empty">
+      <h3>Sin resultados</h3>
+      <p>No encontramos vehículos con esos criterios. Prueba ajustando los filtros — o déjanos encontrarlo por ti en subasta.</p>
+      <button class="btn btn-y" id="clearFilters">Limpiar filtros</button>
+    </div>
+
+    <p class="inv-note">*Mensualidad estimada: 10% de enganche, 60 meses, APR 9.9% — sujeta a aprobación de crédito. Precios sin impuestos ni fees de registro. ¿No está en inventario? <a href="#broker" style="color:var(--amber)">Lo buscamos en subasta por ti.</a></p>
+  </div>
+</section>
+
+
+<section class="fin" id="financiamiento">
+  <div class="container fin-grid">
+    <div class="reveal">
+      <div class="eyebrow"><span class="idx">02 /</span> Financiamiento</div>
+      <h2>Aprobado en minutos,<br>no en semanas</h2>
+      <p class="sub">Nuestro equipo de finanzas trabaja con más de 15 lenders en Florida y encuentra el mejor programa para tu situación — la mayoría de nuestros clientes sale con aprobación el mismo día.</p>
+      <ul class="fin-list">
+        <li><span class="ck"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5 11-11"/></svg></span><span><b>Mal crédito, bienvenido.</b> Reconstruye tu historial comprando el auto que necesitas.</span></li>
+        <li><span class="ck"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5 11-11"/></svg></span><span><b>ITIN y primer comprador.</b> Te guiamos paso a paso, en español.</span></li>
+        <li><span class="ck"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5 11-11"/></svg></span><span><b>Tu auto actual vale.</b> Aceptamos trade-in como enganche, pago justo al instante.</span></li>
+        <li><span class="ck"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5 11-11"/></svg></span><span><b>Primera y última cuota diferidas</b> en programas seleccionados.</span></li>
+      </ul>
+      <a class="btn btn-y" href="#" data-wa="Hola Global Autos Florida! Quiero información sobre financiamiento.">
+        Hablar con un asesor
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+
+    <div class="quick reveal">
+      <h3>Pre-aprobación exprés</h3>
+      <p>Responde 3 datos y te escribimos por WhatsApp con las opciones que califican para ti. Gratis y sin compromiso.</p>
+      <form id="finForm" novalidate>
+        <label for="fName">Nombre</label>
+        <input id="fName" type="text" autocomplete="name" placeholder="Ej. Juan Pérez">
+        <label for="fPhone">Teléfono</label>
+        <input id="fPhone" type="tel" autocomplete="tel" placeholder="(407) 000-0000">
+        <label for="fPay">Cuota mensual objetivo</label>
+        <select id="fPay">
+          <option value="Menos de $300/mes">Menos de $300/mes</option>
+          <option value="$300 – $450/mes" selected>$300 – $450/mes</option>
+          <option value="$450 – $600/mes">$450 – $600/mes</option>
+          <option value="Más de $600/mes">Más de $600/mes</option>
+        </select>
+        <button type="submit" class="btn btn-y">
+          <svg class="ic" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 00-8.65 15.02L2 22l5.13-1.32A10 10 0 1012 2zm0 2a8 8 0 018 8 8 8 0 01-11.7 7.1l-.38-.21-2.6.67.68-2.44-.24-.4A8 8 0 0112 4zm-3.1 4.2c-.2 0-.43.06-.6.26-.18.2-.7.68-.7 1.65s.71 1.92.8 2.05c.1.13 1.4 2.24 3.4 3.05 1.68.68 2.02.55 2.39.52.36-.04 1.17-.48 1.34-.95.16-.48.16-.88.11-.97-.05-.09-.18-.14-.38-.24s-1.1-.54-1.27-.6c-.17-.07-.3-.1-.42.09-.13.19-.5.63-.61.76-.11.13-.23.14-.42.05-.2-.09-.83-.31-1.58-.98-.58-.52-.98-1.16-1.09-1.35-.11-.19-.01-.3.08-.39.09-.09.2-.23.3-.35.1-.11.13-.19.2-.32.07-.13.03-.24-.02-.34-.05-.09-.42-1.02-.58-1.39-.15-.36-.3-.31-.42-.32l-.35-.01z"/></svg>
+          Solicitar por WhatsApp
+        </button>
+        <p class="fine">Al enviar, se abrirá WhatsApp con tus datos listos. Ninguna información se guarda en esta página.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+
+<section id="broker">
+  <div class="container">
+    <div class="reveal">
+      <div class="eyebrow"><span class="idx">03 /</span> Servicio de Broker</div>
+      <h2>Compra tu vehículo<br>directamente en subasta</h2>
+      <p class="sub">Tenemos acceso a miles de oportunidades en Copart, IAA, Manheim y subastas privadas, con el acompañamiento completo de nuestro equipo. Precio real de la subasta. Sin complicaciones.</p>
+    </div>
+
+    <div class="plats reveal">
+      <span class="plat"><b>COPART</b><small>Acceso directo</small></span>
+      <span class="plat"><b>IAA</b><small>Acceso directo</small></span>
+      <span class="plat"><b>MANHEIM</b><small>Acceso directo</small></span>
+      <span class="plat hot"><b>SUBASTAS PRIVADAS</b><small>Acceso exclusivo</small></span>
+    </div>
+
+    <div class="bk-what">
+      <div class="bk-side reveal">
+        <div class="bk-art" aria-hidden="true">
+          <svg viewBox="0 0 160 130" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+            <g>
+              <animateTransform attributeName="transform" type="rotate" values="0 119 97;0 119 97;-24 119 97;6 119 97;0 119 97" keyTimes="0;.55;.65;.78;1" dur="2.8s" repeatCount="indefinite"/>
+              <rect x="34" y="22" width="46" height="26" rx="5" transform="rotate(-45 57 35)"/>
+              <line x1="65" y1="43" x2="119" y2="97" stroke-width="7"/>
+              <line x1="46" y1="26" x2="38" y2="34" opacity=".55"/>
+              <line x1="76" y1="56" x2="68" y2="64" opacity=".55"/>
+            </g>
+            <rect x="14" y="78" width="40" height="11" rx="5"/>
+            <path class="echo" d="M16 68 Q8 83 16 98"/>
+            <path class="echo e2" d="M6 60 Q-2 83 6 106"/>
+          </svg>
+        </div>
+        <h3>¿Qué es nuestro<br>servicio de broker?</h3>
+        <p class="bk-tag"><span class="dsep"></span>Precio real de la subasta · Sin complicaciones<span class="dsep"></span></p>
+      </div>
+      <div class="bk-what-txt reveal">
+        <p class="wlead">Somos tu broker de confianza.</p>
+        <p>Contamos con acceso a subastas privadas y a las principales plataformas de subastas de vehículos del país, donde te ayudamos a encontrar exactamente el vehículo que estás buscando — de cualquier marca, modelo y condición.</p>
+        <p>Nuestro equipo te acompaña durante todo el proceso de compra: desde la selección del vehículo y la participación en la subasta, hasta la coordinación del transporte y la documentación correspondiente. Tú tomas las decisiones — nosotros ejecutamos, cuidamos y respondemos.</p>
+      </div>
+    </div>
+
+    <div class="bk-h reveal">
+      <h3>¿Cómo funciona?</h3>
+      <p>Siete pasos, cero complicaciones. Tú defines las reglas y nosotros manejamos el proceso completo contigo.</p>
+    </div>
+
+    <div class="steps">
+      <div class="step reveal">
+        <span class="n">01</span>
+        <h4>Elige tu vehículo</h4>
+        <p>Busca el vehículo que te interesa en Copart, IAA o Manheim — o permítenos ayudarte a encontrar opciones que se ajusten a lo que buscas.</p>
+      </div>
+      <div class="step reveal">
+        <span class="n">02</span>
+        <h4>Define tu presupuesto</h4>
+        <p>Te ayudamos a establecer el monto máximo que deseas ofertar por el vehículo. Ese será tu techo: nunca ofertamos un dólar por encima.</p>
+      </div>
+      <div class="step depo reveal">
+        <span class="n">03</span>
+        <h4>Realiza tu depósito de garantía</h4>
+        <p>Para participar en la compra se requiere un depósito de garantía equivalente al 10% del monto del vehículo. Si la compra se concreta, este depósito se aplica al pago del vehículo.</p>
+        <span class="deco10" aria-hidden="true">10%</span>
+      </div>
+      <div class="step reveal">
+        <span class="n">04</span>
+        <h4>Nosotros hacemos la oferta</h4>
+        <p>Nuestro equipo participa en la subasta y realiza las ofertas hasta el límite máximo que hayas autorizado. Sin sorpresas, sin cargos ocultos.</p>
+      </div>
+      <div class="step reveal">
+        <span class="n">05</span>
+        <h4>Si ganamos, realizas el pago</h4>
+        <p>Una vez ganada la subasta, el vehículo debe ser pagado dentro del plazo establecido por la subasta correspondiente. Tu depósito de garantía se toma en cuenta dentro del pago.</p>
+      </div>
+      <div class="step reveal">
+        <span class="n">06</span>
+        <h4>Coordinamos el transporte</h4>
+        <p>Gestionamos el traslado del vehículo desde la subasta hasta el destino que indiques — tu casa, nuestro lote o donde lo necesites.</p>
+      </div>
+      <div class="step wide reveal">
+        <span class="n">07</span>
+        <div>
+          <h4>Documentación</h4>
+          <p>Te ayudamos con la gestión correspondiente de títulos y toda la documentación relacionada con el proceso, para que tu vehículo quede legal, registrado y listo para rodar.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="bk-h reveal">
+      <h3>¿Qué obtienes con nuestro servicio?</h3>
+      <p>Todo el peso del proceso, sobre nuestros hombros. Todo el control de la decisión, en tus manos.</p>
+    </div>
+
+    <ul class="gains reveal">
+      <li><span class="ck"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5 11-11"/></svg></span>Acceso a oportunidades en subastas privadas</li>
+      <li><span class="ck"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5 11-11"/></svg></span>Acceso a Copart, IAA y Manheim</li>
+      <li><span class="ck"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5 11-11"/></svg></span>Acompañamiento durante todo el proceso de compra</li>
+      <li><span class="ck"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5 11-11"/></svg></span>Asistencia para seleccionar vehículos</li>
+      <li><span class="ck"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5 11-11"/></svg></span>Gestión de ofertas en la subasta</li>
+      <li><span class="ck"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5 11-11"/></svg></span>Coordinación del transporte</li>
+      <li><span class="ck"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5 11-11"/></svg></span>Gestión de documentación y títulos</li>
+      <li><span class="ck"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5 11-11"/></svg></span>Atención personalizada</li>
+    </ul>
+  </div>
+
+  <div class="bcta">
+    <div class="container bcta-in">
+      <p class="bcta-k">¿Listo para comprar en subasta?</p>
+      <h2>TÚ ELIGES EL VEHÍCULO.<br><span>NOSOTROS TE AYUDAMOS CON EL PROCESO.</span></h2>
+      <p class="bcta-sub">Encuentra vehículos de diferentes marcas, modelos y condiciones disponibles en las principales subastas de Estados Unidos. Miles de oportunidades están disponibles — déjanos ayudarte a comenzar.</p>
+      <div class="bcta-btns">
+        <a class="btn btn-dark" href="#" data-wa="Hola Global Autos Florida! Quiero información sobre el servicio de broker para comprar en subasta.">
+          <svg class="ic" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 00-8.65 15.02L2 22l5.13-1.32A10 10 0 1012 2zm0 2a8 8 0 018 8 8 8 0 01-11.7 7.1l-.38-.21-2.6.67.68-2.44-.24-.4A8 8 0 0112 4zm-3.1 4.2c-.2 0-.43.06-.6.26-.18.2-.7.68-.7 1.65s.71 1.92.8 2.05c.1.13 1.4 2.24 3.4 3.05 1.68.68 2.02.55 2.39.52.36-.04 1.17-.48 1.34-.95.16-.48.16-.88.11-.97-.05-.09-.18-.14-.38-.24s-1.1-.54-1.27-.6c-.17-.07-.3-.1-.42.09-.13.19-.5.63-.61.76-.11.13-.23.14-.42.05-.2-.09-.83-.31-1.58-.98-.58-.52-.98-1.16-1.09-1.35-.11-.19-.01-.3.08-.39.09-.09.2-.23.3-.35.1-.11.13-.19.2-.32.07-.13.03-.24-.02-.34-.05-.09-.42-1.02-.58-1.39-.15-.36-.3-.31-.42-.32l-.35-.01z"/></svg>
+          Quiero comprar en subasta
+        </a>
+        <a class="btn btn-line" href="tel:+17863108889">
+          <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          786-310-8889
+        </a>
+      </div>
+      <p class="bcta-fine">*Servicio de broker sujeto a los términos y plazos de cada casa de subasta.</p>
+    </div>
+  </div>
+</section>
+
+
+<section id="nosotros">
+  <div class="container">
+    <div class="reveal">
+      <div class="eyebrow"><span class="idx">04 /</span> Nosotros</div>
+      <h2>Más que un dealer,<br>vecinos de Kissimmee</h2>
+    </div>
+
+    <div class="about">
+      <div class="about-txt reveal">
+        <p class="lead">Global Autos Florida LLC nació en el corazón de Kissimmee con una convicción sencilla: comprar un auto en este país no debería sentirse como una batalla — y mucho menos tener que pelearla en un idioma que no es el tuyo.</p>
+        <p>Lo que empezó como un lote pequeño sobre la US-192 se convirtió, auto por auto y cliente por cliente, en el dealer que hoy recomiendan cientos de familias del área de Orlando: un lugar donde el precio que ves es el precio que pagas, donde el crédito dañado no cierra puertas y donde cada vehículo pasa por una inspección de 150 puntos antes de tocar el lote.</p>
+        <p>Somos un negocio familiar administrado por su propia gente, no por inversionistas de otro estado. Eso significa que quien te atiende hoy es la misma persona que te va a contestar el teléfono seis meses después — cuando vuelvas con una duda sobre tu auto o con el plan de traer al siguiente miembro de la familia.</p>
+        <p>Hoy, además de la venta de seminuevos y del financiamiento para todo tipo de crédito, ayudamos a nuestros clientes a comprar directamente en las grandes subastas de Estados Unidos a través de nuestro <a href="#broker" class="inlink">servicio de broker</a> — con el mismo principio de siempre: acceso real, precio transparente y acompañamiento de principio a fin.</p>
+        <p>Si nos visitas, vas a encontrar café, aire acondicionado y un equipo que habla tu idioma — literalmente. Esa es la diferencia entre comprar un auto… y comprarlo con Global.</p>
+      </div>
+      <aside class="about-aside reveal">
+        <blockquote>
+          <span class="qm" aria-hidden="true">“</span>
+          No vendemos autos a clientes: acompañamos a vecinos en una de las decisiones más grandes de su vida en este país.
+          <cite>— Familia Global Autos Florida</cite>
+        </blockquote>
+        <ul class="about-facts">
+          <li><b>Dealer familiar</b><span>Administrado por su dueño, no por inversionistas</span></li>
+          <li><b>+500 autos</b><span>Entregados en el área de Kissimmee–Orlando</span></li>
+          <li><b>100% bilingüe</b><span>Toda la atención, en español o en inglés</span></li>
+          <li><b>Toda Florida</b><span>Venta, financiamiento y broker de subastas</span></li>
+        </ul>
+      </aside>
+    </div>
+
+    <div class="bk-h reveal">
+      <h3>Nuestra forma de trabajar</h3>
+      <p>Cuatro compromisos que aplicamos a cada auto, a cada crédito y a cada puja en subasta.</p>
+    </div>
+
+    <div class="feat-grid">
+      <div class="feat reveal">
+        <div class="fic"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83 0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z"/><circle cx="7" cy="7" r="1.5"/></svg></div>
+        <h3>Precio transparente</h3>
+        <p>El precio que ves es el precio que es. Sin cargos sorpresa ni adendas infladas al final.</p>
+      </div>
+      <div class="feat reveal">
+        <div class="fic"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></div>
+        <h3>Inspección 150 puntos</h3>
+        <p>Cada auto pasa por nuestro taller antes de publicarse. Historial Carfax disponible.</p>
+      </div>
+      <div class="feat reveal">
+        <div class="fic"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20M6 15h4"/></svg></div>
+        <h3>Financiamiento propio</h3>
+        <p>15+ lenders, programas para ITIN, primer comprador y reconstrucción de crédito.</p>
+      </div>
+      <div class="feat reveal">
+        <div class="fic"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.5 13L17 22l-5-3-5 3 1.5-9"/></svg></div>
+        <h3>Garantía incluida</h3>
+        <p>Motor y transmisión cubiertos por 3 meses o 3,000 millas en compras elegibles.</p>
+      </div>
+    </div>
+
+    <div class="rev-head reveal">
+      <div>
+        <div class="eyebrow" style="margin-bottom:10px">Lo que dicen</div>
+        <h2 style="font-size:clamp(1.6rem,3vw,2.2rem)">Clientes reales, autos reales</h2>
+      </div>
+      <div class="gbadge">
+        <span class="g">4.9 <span>/ 5</span></span>
+        <small>Basado en 187<br>reseñas de Google</small>
+      </div>
+    </div>
+
+    <div class="revs">
+      <div class="rev reveal">
+        <div class="stars"><svg class="ic" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3l2.7 5.6 6.1.8-4.5 4.3 1.1 6-5.4-2.9-5.4 2.9 1.1-6L3.2 9.4l6.1-.8z"/></svg><svg class="ic" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3l2.7 5.6 6.1.8-4.5 4.3 1.1 6-5.4-2.9-5.4 2.9 1.1-6L3.2 9.4l6.1-.8z"/></svg><svg class="ic" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3l2.7 5.6 6.1.8-4.5 4.3 1.1 6-5.4-2.9-5.4 2.9 1.1-6L3.2 9.4l6.1-.8z"/></svg><svg class="ic" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3l2.7 5.6 6.1.8-4.5 4.3 1.1 6-5.4-2.9-5.4 2.9 1.1-6L3.2 9.4l6.1-.8z"/></svg><svg class="ic" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3l2.7 5.6 6.1.8-4.5 4.3 1.1 6-5.4-2.9-5.4 2.9 1.1-6L3.2 9.4l6.1-.8z"/></svg></div>
+        <q>Compré mi CR-V y todo fue rapidísimo. Me la entregaron el mismo día que me aprobaron el crédito, con seguro incluido en la orientación.</q>
+        <div class="who"><span class="ava">MG</span><div><b>María González</b><span>Honda CR-V 2022</span></div></div>
+      </div>
+      <div class="rev reveal">
+        <div class="stars"><svg class="ic" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3l2.7 5.6 6.1.8-4.5 4.3 1.1 6-5.4-2.9-5.4 2.9 1.1-6L3.2 9.4l6.1-.8z"/></svg><svg class="ic" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3l2.7 5.6 6.1.8-4.5 4.3 1.1 6-5.4-2.9-5.4 2.9 1.1-6L3.2 9.4l6.1-.8z"/></svg><svg class="ic" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3l2.7 5.6 6.1.8-4.5 4.3 1.1 6-5.4-2.9-5.4 2.9 1.1-6L3.2 9.4l6.1-.8z"/></svg><svg class="ic" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3l2.7 5.6 6.1.8-4.5 4.3 1.1 6-5.4-2.9-5.4 2.9 1.1-6L3.2 9.4l6.1-.8z"/></svg><svg class="ic" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3l2.7 5.6 6.1.8-4.5 4.3 1.1 6-5.4-2.9-5.4 2.9 1.1-6L3.2 9.4l6.1-.8z"/></svg></div>
+        <q>Tenía el crédito dañado y en otros dealers me cerraron las puertas. Aquí me aprobaron en menos de una hora y con una cuota que sí puedo pagar.</q>
+        <div class="who"><span class="ava">CM</span><div><b>Carlos Méndez</b><span>Ford F-150 2021</span></div></div>
+      </div>
+      <div class="rev reveal">
+        <div class="stars"><svg class="ic" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3l2.7 5.6 6.1.8-4.5 4.3 1.1 6-5.4-2.9-5.4 2.9 1.1-6L3.2 9.4l6.1-.8z"/></svg><svg class="ic" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3l2.7 5.6 6.1.8-4.5 4.3 1.1 6-5.4-2.9-5.4 2.9 1.1-6L3.2 9.4l6.1-.8z"/></svg><svg class="ic" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3l2.7 5.6 6.1.8-4.5 4.3 1.1 6-5.4-2.9-5.4 2.9 1.1-6L3.2 9.4l6.1-.8z"/></svg><svg class="ic" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3l2.7 5.6 6.1.8-4.5 4.3 1.1 6-5.4-2.9-5.4 2.9 1.1-6L3.2 9.4l6.1-.8z"/></svg><svg class="ic" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3l2.7 5.6 6.1.8-4.5 4.3 1.1 6-5.4-2.9-5.4 2.9 1.1-6L3.2 9.4l6.1-.8z"/></svg></div>
+        <q>El Mustang quedó exactamente como lo mostraban en las fotos. Sin letras pequeñas, sin cargos raros al final. Eso ya vale cinco estrellas.</q>
+        <div class="who"><span class="ava">JR</span><div><b>Jessica Ramírez</b><span>Ford Mustang GT 2022</span></div></div>
+      </div>
+      <div class="rev reveal">
+        <div class="stars"><svg class="ic" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3l2.7 5.6 6.1.8-4.5 4.3 1.1 6-5.4-2.9-5.4 2.9 1.1-6L3.2 9.4l6.1-.8z"/></svg><svg class="ic" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3l2.7 5.6 6.1.8-4.5 4.3 1.1 6-5.4-2.9-5.4 2.9 1.1-6L3.2 9.4l6.1-.8z"/></svg><svg class="ic" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3l2.7 5.6 6.1.8-4.5 4.3 1.1 6-5.4-2.9-5.4 2.9 1.1-6L3.2 9.4l6.1-.8z"/></svg><svg class="ic" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3l2.7 5.6 6.1.8-4.5 4.3 1.1 6-5.4-2.9-5.4 2.9 1.1-6L3.2 9.4l6.1-.8z"/></svg><svg class="ic" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3l2.7 5.6 6.1.8-4.5 4.3 1.1 6-5.4-2.9-5.4 2.9 1.1-6L3.2 9.4l6.1-.8z"/></svg></div>
+        <q>Compré mi camioneta a través de su servicio de broker, directo de la subasta, y me ahorré buen dinero. Me explicaron cada paso y me la entregaron en casa.</q>
+        <div class="who"><span class="ava">AP</span><div><b>Andrey Padrón</b><span>Broker · Subasta Manheim</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section id="contacto" style="background:var(--coal);border-top:1px solid var(--line)">
+  <div class="container">
+    <div class="reveal">
+      <div class="eyebrow"><span class="idx">05 /</span> Visítanos</div>
+      <h2>Ven a verlo<br>en persona</h2>
+      <p class="sub">Estamos a minutos de la US-192, en el corazón de Kissimmee. Puedes venir sin cita — o escríbenos antes para tener el auto listo y esperándote en la puerta.</p>
+    </div>
+
+    <div class="cont-grid">
+      <div class="reveal">
+        <ul class="cont-list">
+          <li>
+            <span class="cic"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+            <div><small>Dirección</small>
+              <a href="https://www.google.com/maps/dir/?api=1&destination=1054+American+Way+Kissimmee+FL+34741" target="_blank" rel="noopener">1054 American Way,<br>Kissimmee, FL 34741</a>
+            </div>
+          </li>
+          <li>
+            <span class="cic"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></span>
+            <div><small>Ventas & Broker · Español / English</small><a href="tel:+17863108889">786-310-8889</a></div>
+          </li>
+          <li>
+            <span class="cic"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 6l-10 7L2 6"/></svg></span>
+            <div><small>Correo</small><a href="mailto:globalautosflorida@gmail.com">globalautosflorida@gmail.com</a></div>
+          </li>
+          <li>
+            <span class="cic"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
+            <div><small>Horario</small>
+              <div class="hours"><span><b>Lun – Sáb:</b> 9:00 AM – 8:00 PM</span><span><b>Domingo:</b> 11:00 AM – 6:00 PM</span></div>
+            </div>
+          </li>
+        </ul>
+        <div style="display:flex;gap:14px;flex-wrap:wrap">
+          <a class="btn btn-y" href="https://www.google.com/maps/dir/?api=1&destination=1054+American+Way+Kissimmee+FL+34741" target="_blank" rel="noopener">
+            Cómo llegar
+            <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a class="btn btn-o" href="tel:+17863108889">Llamar ahora</a>
+        </div>
+      </div>
+
+      <div class="map-wrap reveal" aria-label="Mapa de la ubicación">
+        <svg viewBox="0 0 520 400" preserveAspectRatio="xMidYMid slice">
+          <rect width="520" height="400" fill="#0B0B0B"/>
+          <g stroke="#141414" stroke-width="10">
+            <path d="M60 0V400M150 0V400M240 0V400M390 0V400M460 0V400"/>
+            <path d="M0 60H520M0 236H520M0 300H520M0 352H520"/>
+          </g>
+          <g fill="#101010" stroke="#181818">
+            <rect x="68" y="70" width="72" height="156"/><rect x="160" y="70" width="72" height="72"/>
+            <rect x="250" y="70" width="80" height="156"/><rect x="400" y="70" width="52" height="72"/>
+            <rect x="68" y="310" width="72" height="34"/><rect x="250" y="246" width="80" height="44"/>
+            <rect x="400" y="246" width="52" height="98"/><rect x="160" y="152" width="72" height="74"/>
+          </g>
+          <path d="M0 168H520" stroke="#232323" stroke-width="26"/>
+          <path d="M0 168H520" stroke="#FFCE00" stroke-width="1.6" stroke-dasharray="14 12" opacity=".5"/>
+          <text x="22" y="152" font-family="Barlow Condensed, sans-serif" font-size="12.5" letter-spacing="2.5" fill="#6E6E66">W IRLO BRONSON MEMORIAL HWY · US-192</text>
+          <path d="M330 0V400" stroke="#1D1D1D" stroke-width="20"/>
+          <text x="344" y="36" font-family="Barlow Condensed, sans-serif" font-size="12.5" letter-spacing="2.5" fill="#6E6E66" transform="rotate(90 344 36)">S JOHN YOUNG PKWY</text>
+          <path class="route" d="M96 168 V 262 H 322" stroke="#FFCE00" stroke-width="2.5" fill="none"/>
+          <g transform="translate(322,262)">
+            <circle class="pin-pulse" r="14" fill="none" stroke="#FFCE00" stroke-width="2"/>
+            <circle class="pin-pulse d2" r="14" fill="none" stroke="#FFCE00" stroke-width="2"/>
+            <path d="M0-30C-11-30-19-22-19-12c0 10 12 22 19 30 7-8 19-20 19-30 0-10-8-18-19-18z" fill="#FFCE00" stroke="#0A0A0A" stroke-width="2"/>
+            <circle cy="-11" r="6.5" fill="#0A0A0A"/>
+          </g>
+          <g transform="translate(140,196)">
+            <rect width="190" height="44" fill="#0D0D0D" stroke="#FFCE00" stroke-width="1"/>
+            <text x="12" y="19" font-family="Barlow Condensed, sans-serif" font-weight="700" font-size="14" letter-spacing="1.5" fill="#F4F4EF">GLOBAL AUTOS FLORIDA</text>
+            <text x="12" y="35" font-family="Barlow Condensed, sans-serif" font-size="12.5" letter-spacing="1" fill="#A9A9A1">1054 American Way · Kissimmee</text>
+          </g>
+        </svg>
+        <a class="map-cta" href="https://www.google.com/maps/dir/?api=1&destination=1054+American+Way+Kissimmee+FL+34741" target="_blank" rel="noopener">
+          <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Abrir en Google Maps
+        </a>
+      </div>
+    </div>
+
+    <div class="cform reveal">
+      <h3>¿Buscando algo en especial?</h3>
+      <p style="color:var(--muted);margin-top:8px;font-size:.95rem">Cuéntanos qué auto buscas y tu presupuesto. Lo encontramos por ti — en inventario o directamente en subasta.</p>
+      <form id="cForm" novalidate>
+        <div class="row">
+          <div><label for="cName">Nombre</label><input id="cName" type="text" autocomplete="name" placeholder="Tu nombre"></div>
+          <div><label for="cPhone">Teléfono</label><input id="cPhone" type="tel" autocomplete="tel" placeholder="(407) 000-0000"></div>
+        </div>
+        <div style="margin-top:18px"><label for="cMsg">¿Qué auto buscas?</label><textarea id="cMsg" placeholder="Ej. SUV familiar, menos de 60k millas, cuota de ~$400/mes… o «búscame una camioneta en subasta»"></textarea></div>
+        <div class="actions">
+          <button type="submit" class="btn btn-y">Enviar solicitud</button>
+          <a class="btn btn-o" href="#" data-wa="Hola Global Autos Florida! Busco un auto en especial.">Mejor por WhatsApp</a>
+          <span class="hint">Te respondemos el mismo día hábil.</span>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+</main>
+
+
+<footer>
+  <div class="container foot-grid">
+    <div>
+      <a href="#inicio" class="brand">
+        <svg class="brand-badge" viewBox="0 0 46 46" aria-hidden="true">
+          <path d="M23 3L43 23 23 43 3 23Z" fill="#0D0D0D" stroke="#FFCE00" stroke-width="2"/>
+          <path d="M14 30h18M15 27l3-8h10l3 8" fill="none" stroke="#FFCE00" stroke-width="1.6" stroke-linecap="round"/>
+          <circle cx="17" cy="28.5" r="2.2" fill="#FFCE00"/><circle cx="29" cy="28.5" r="2.2" fill="#FFCE00"/>
+        </svg>
+        <span class="brand-txt">
+          <span class="l1" style="font-size:22px">GLOBAL <b>AUTOS</b></span>
+          <span class="l2">FLORIDA LLC</span>
+        </span>
+      </a>
+      <p class="foot-about">Dealer familiar de autos seminuevos en Kissimmee, Florida. Compra, venta, trade-in, financiamiento para todo tipo de crédito y broker de subastas (Copart · IAA · Manheim).</p>
+    </div>
+    <div>
+      <h4>Navegación</h4>
+      <ul class="foot-links">
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#inventario">Inventario</a></li>
+        <li><a href="#financiamiento">Financiamiento</a></li>
+        <li><a href="#broker">Broker de subastas</a></li>
+        <li><a href="#nosotros">Nosotros</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Contacto</h4>
+      <ul class="foot-contact">
+        <li><a href="https://www.google.com/maps/dir/?api=1&destination=1054+American+Way+Kissimmee+FL+34741" target="_blank" rel="noopener"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>1054 American Way, Kissimmee, FL 34741</a></li>
+        <li><a href="tel:+17863108889"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>786-310-8889</a></li>
+        <li><a href="mailto:globalautosflorida@gmail.com"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 6l-10 7L2 6"/></svg>globalautosflorida@gmail.com</a></li>
+        <li style="font-family:var(--ft);font-size:15px;letter-spacing:.5px"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--yellow)"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Lun–Sáb 9AM–8PM · Dom 11AM–6PM</li>
+      </ul>
+    </div>
+  </div>
+  <div class="container foot-bot">
+    <span>© 2025 GLOBAL AUTOS FLORIDA LLC · Todos los derechos reservados</span>
+    <span>Autos seminuevos & Broker de subastas · Kissimmee, Florida</span>
+  </div>
+</footer>
+
+
+<a class="float-wa" href="#" data-wa="Hola Global Autos Florida! Tengo una pregunta.">
+  <svg class="ic" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 00-8.65 15.02L2 22l5.13-1.32A10 10 0 1012 2zm0 2a8 8 0 018 8 8 8 0 01-11.7 7.1l-.38-.21-2.6.67.68-2.44-.24-.4A8 8 0 0112 4zm-3.1 4.2c-.2 0-.43.06-.6.26-.18.2-.7.68-.7 1.65s.71 1.92.8 2.05c.1.13 1.4 2.24 3.4 3.05 1.68.68 2.02.55 2.39.52.36-.04 1.17-.48 1.34-.95.16-.48.16-.88.11-.97-.05-.09-.18-.14-.38-.24s-1.1-.54-1.27-.6c-.17-.07-.3-.1-.42.09-.13.19-.5.63-.61.76-.11.13-.23.14-.42.05-.2-.09-.83-.31-1.58-.98-.58-.52-.98-1.16-1.09-1.35-.11-.19-.01-.3.08-.39.09-.09.2-.23.3-.35.1-.11.13-.19.2-.32.07-.13.03-.24-.02-.34-.05-.09-.42-1.02-.58-1.39-.15-.36-.3-.31-.42-.32l-.35-.01z"/></svg>
+  <span>¿Dudas? Escríbenos</span>
+</a>
+
+
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="mTitle">
+  <div class="modal-bg" data-close></div>
+  <div class="modal-box">
+    <button class="modal-close" data-close aria-label="Cerrar detalle">
+      <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+    <div class="modal-in">
+      <div class="modal-showroom" id="mShow"></div>
+      <div class="modal-body">
+        <div class="kicker" id="mKicker"></div>
+        <h3 id="mTitle"></h3>
+        <div class="modal-price"><span class="p" id="mPrice"></span><span class="m" id="mMo"></span></div>
+        <dl class="modal-specs" id="mSpecs"></dl>
+        <div class="chips" id="mChips"></div>
+        <p class="modal-desc" id="mDesc"></p>
+        <div class="modal-actions">
+          <a class="btn btn-y" id="mWa" href="#" target="_blank" rel="noopener">
+            <svg class="ic" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 00-8.65 15.02L2 22l5.13-1.32A10 10 0 1012 2zm0 2a8 8 0 018 8 8 8 0 01-11.7 7.1l-.38-.21-2.6.67.68-2.44-.24-.4A8 8 0 0112 4zm-3.1 4.2c-.2 0-.43.06-.6.26-.18.2-.7.68-.7 1.65s.71 1.92.8 2.05c.1.13 1.4 2.24 3.4 3.05 1.68.68 2.02.55 2.39.52.36-.04 1.17-.48 1.34-.95.16-.48.16-.88.11-.97-.05-.09-.18-.14-.38-.24s-1.1-.54-1.27-.6c-.17-.07-.3-.1-.42.09-.13.19-.5.63-.61.76-.11.13-.23.14-.42.05-.2-.09-.83-.31-1.58-.98-.58-.52-.98-1.16-1.09-1.35-.11-.19-.01-.3.08-.39.09-.09.2-.23.3-.35.1-.11.13-.19.2-.32.07-.13.03-.24-.02-.34-.05-.09-.42-1.02-.58-1.39-.15-.36-.3-.31-.42-.32l-.35-.01z"/></svg>
+            Lo quiero — escribir
+          </a>
+          <a class="btn btn-o" id="mTest" href="#" target="_blank" rel="noopener">Agendar prueba de manejo</a>
+          <a class="btn btn-o" id="mCall" href="tel:+17863108889">
+            <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            Llamar 786-310-8889
+          </a>
+        </div>
+        <p class="modal-fine">*Mensualidad estimada (10% down, 60 meses, APR 9.9%). Sujeta a aprobación de crédito. Precio sin impuestos ni fees.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div id="toast" role="status">
+  <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12l3 3 5-6"/></svg>
+  <p id="toastMsg"></p>
+</div>
