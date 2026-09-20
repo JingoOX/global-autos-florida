@@ -61,12 +61,7 @@ const CARS = [
    trans:'Automática 8 velocidades', fuel:'Gasolina · 32 MPG', drive:'Delantera (FWD)',
    engine:'2.5L I4 · 206 HP', ext:'Celestial Silver Metallic',
    cond:'Seminuevo', badge:'NUEVO INGRESO', featured:true,
-   photos:[
-     '',
-     '',
-     '',
-     ''
-   ],
+   photos:[], numPhotos:4,
    desc:'El Camry en su versión más deportiva: el XSE. Motor 2.5L Dynamic Force de 206 HP con transmisión automática de 8 velocidades — la combinación que convirtió al Camry en el sedán más vendido de América. Celestial Silver Metallic sobre cuero negro, techo panorámico, JBL, head-up display y Toyota Safety Sense 2.0+ completo. 64 mil millas apenas: este motor está hecho para pasar de las 200 mil sin sudar.',
    feats:['Techo panorámico','Asientos de cuero calefactados','JBL Premium Audio','Head-up display','Toyota Safety Sense 2.0+','CarPlay / Android Auto']},
 
@@ -76,9 +71,19 @@ const CARS = [
    trans:'CVT', fuel:'Gasolina · 33 MPG', drive:'Delantera (FWD)',
    engine:'1.5L Turbo I4 · 160 HP', ext:'Mosaic Black Metallic',
    cond:'Seminuevo', badge:'NUEVO INGRESO', featured:false,
-   photos:[],
+   photos:[], numPhotos:5,
    desc:'El Malibu LT con el motor 1.5L Turbo de 160 HP y 184 lb-ft de torque — la combinación que entrega 33 MPG combinado sin sacrificar el empuje en autopista. Mosaic Black Metallic sobre interior gris, Chevrolet Infotainment 3 con pantalla de 8", push-button start y 6 parlantes. 90 mil millas en un 1.5L Turbo son apenas el comienzo: este bloque está hecho para pasar de las 200 mil con el mantenimiento al día. Precio honesto para un sedán mediano que aún tiene mucho que dar.',
-   feats:['Chevrolet Infotainment 3 · 8"','Push-button start','Bluetooth · 6 parlantes','Rear Seat Reminder','Cámara de retroceso','CarPlay / Android Auto']}
+   feats:['Chevrolet Infotainment 3 · 8"','Push-button start','Bluetooth · 6 parlantes','Rear Seat Reminder','Cámara de retroceso','CarPlay / Android Auto']},
+
+  {id:5, folder:'05-toyota-camry-le',
+   year:2018, make:'Toyota', model:'Camry LE', type:'sedan',
+   price:15500, miles:88500,
+   trans:'Automática 8 velocidades', fuel:'Gasolina · 32 MPG', drive:'Delantera (FWD)',
+   engine:'2.5L I4 · 203 HP', ext:'Blizzard Pearl (Blanco)',
+   cond:'Seminuevo', badge:'NUEVO INGRESO', featured:false,
+   photos:[], numPhotos:6,
+   desc:'El Camry en su versión más accesible: el LE. Motor 2.5L Dynamic Force de 203 HP con transmisión automática de 8 velocidades — la misma planta motriz del XSE pero a precio de entrada. Blizzard Pearl sobre interior beige, Toyota Safety Sense P de serie (frenado automático, crucero adaptativo, alerta de carril) y 39 MPG en autopista. 88 mil millas en un 2.5L Toyota son apenas el calentamiento: este bloque está hecho para pasar de las 300 mil. El sedán que no falla, al precio que sí califica.',
+   feats:['Toyota Safety Sense P','Frenado automático de emergencia','Crucero adaptativo','Bi-LED headlights','CarPlay / Android Auto','Cámara de retroceso']}
 ];
 
 /* ================= SILUETAS (respaldo de autos sin fotos) ================= */
@@ -183,7 +188,7 @@ function carSVG(c){
 function cardHTML(c, i){
   return `<article class="car-card ${c.featured?'featured':''}" style="animation-delay:${i*55}ms">
     <div class="showroom">
-      ${c.photos ? photoImg(c, 0, `alt="${c.year} ${c.make} ${c.model}" loading="lazy"`) : carSVG(c)}
+      ${galCount(c) > 0 ? photoImg(c, 0, `alt="${c.year} ${c.make} ${c.model}" loading="lazy"`) : carSVG(c)}
       <div class="badges">
         <span class="badge">${c.cond}</span>
         ${c.badge?`<span class="badge hot">${c.badge}</span>`:''}
@@ -259,9 +264,16 @@ const gal = {car:null, idx:0};
 
 const ARROW = d => `<svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="${d}"/></svg>`;
 
+/* Cuenta cuántas fotos tiene un auto: si tiene array photos con URLs, usa su longitud;
+   si no (autos nuevos con solo WebP local), usa numPhotos o 0. */
+function galCount(c){
+  if(c.photos && c.photos.length) return c.photos.length;
+  return c.numPhotos || 0;
+}
 function setGal(i){
   if(!gal.car) return;
-  const c = gal.car, n = c.photos.length;
+  const c = gal.car, n = galCount(c);
+  if(n===0) return;
   gal.idx = ((i % n) + n) % n;
   document.getElementById('galMain').innerHTML =
     photoImg(c, gal.idx, `alt="Foto ${gal.idx+1} de ${n} · ${c.year} ${c.make} ${c.model}"`) +
@@ -272,13 +284,15 @@ function setGal(i){
 }
 function buildGallery(c){
   gal.car = c; gal.idx = 0;
+  const n = galCount(c);
   mShow.classList.add('gal-mode');
-  mShow.innerHTML = `<div class="gal">
-    <div class="gal-main" id="galMain"></div>
-    <div class="gal-thumbs">${c.photos.map((p,i)=>`
+  const thumbs = Array.from({length:n},(_,i)=>`
       <button class="gal-thumb ${i===0?'active':''}" data-i="${i}" aria-label="Ver foto ${i+1}">
         ${photoImg(c, i, 'alt="" loading="lazy"')}
-      </button>`).join('')}</div>
+      </button>`).join('');
+  mShow.innerHTML = `<div class="gal">
+    <div class="gal-main" id="galMain"></div>
+    <div class="gal-thumbs">${thumbs}</div>
   </div>`;
   setGal(0);
 }
@@ -296,7 +310,7 @@ function openModal(id){
   document.getElementById('mDesc').textContent = c.desc;
   document.getElementById('mWa').href = waCar(c);
   document.getElementById('mTest').href = waLink(`Hola! Quiero agendar una prueba de manejo del ${c.year} ${c.make} ${c.model}. ¿Cuándo puedo pasar?`);
-  if(c.photos && c.photos.length){ buildGallery(c); }
+  if(galCount(c) > 0){ buildGallery(c); }
   else { gal.car = null; mShow.classList.remove('gal-mode'); mShow.innerHTML = carSVG(c); }
   modal.classList.add('open'); document.body.style.overflow='hidden';
 }

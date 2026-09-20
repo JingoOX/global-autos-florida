@@ -201,3 +201,56 @@ Stage Summary:
 - 5 photos processed to 4:5 WebP (707.1KB total), cover photo = front 3/4 view of black Malibu.
 - Inventory now: 4 cars (Honda Civic, Toyota Corolla, Toyota Camry, Chevrolet Malibu). Total image weight: 19 WebP files (8+5+4+5) = ~3.1MB.
 - To add another car in the future: drop WebP photos in public/autos/NN-folder/ (cover = 1.webp = front view), add the car to the CARS array in script.js with id:5 and an empty photos:[]. The hardened photoImg() handles the rest.
+
+---
+Task ID: 6
+Agent: main (Z.ai Code)
+Task: Add a new car (2018 Toyota Camry LE, white/Blizzard Pearl, $15,500, 88,500 mi) to the inventory. Same procedure: keep 4:5 aspect ratio, cover photo = front view, research real specs. Also fix a bug found in the gallery logic for cars with empty photos arrays.
+
+Work Log:
+- 6 photos uploaded: IMG_9022.jpg, IMG_9024.jpg, IMG_9026.jpg, IMG_9028.jpg, IMG_9029.jpg, IMG_9030.jpg (each ~7-9MB, 3024×3780).
+- Analyzed all 6 photos with z-ai vision (VLM). Two (IMG_9022, IMG_9028) failed the first API call with format error code 1210 but succeeded on retry. Results:
+  - IMG_9030 = front 3/4, driver-side, car faces right, shows grille + headlights + hood + full side profile (both front+rear wheels) → PORTADA (foto 1)
+  - IMG_9028 = front 3/4, slightly elevated, shows bumper + grille + headlights + windshield + side wheels
+  - IMG_9029 = front 3/4, passenger-side, car faces left, shows grille + hood + passenger headlight + front wheel
+  - IMG_9022 = interior, driver seat + dashboard (black dash, beige seats, Toyota steering wheel)
+  - IMG_9024 = interior, seats view from rear (front+rear seats, center console, sunroof visible)
+  - IMG_9026 = interior, dashboard/touchscreen (beige)
+  - IMG_9030 chosen as cover because it shows the most complete side profile (both wheels + full side).
+- Researched 2018 Toyota Camry LE specs via z-ai web_search (3 searches). Confirmed:
+  - Engine: 2.5L Dynamic Force I4, 203 HP @ 6600 RPM, 184 lb-ft torque (base engine across all trims)
+  - Transmission: 8-speed automatic (Direct Shift-8AT)
+  - Drivetrain: Front-Wheel Drive (FWD)
+  - Fuel economy: 28 city / 39 highway / 32 combined MPG (LE/SE/XLE/XSE)
+  - Color: Blizzard Pearl (the official Toyota white — confirmed from 2018 Camry color palette)
+  - Features: Toyota Safety Sense P standard (pre-collision braking, adaptive cruise, lane departure alert), Bi-LED headlights, LED taillights, Entune infotainment, 7" touchscreen, CarPlay/Android Auto, rearview camera
+- Created scripts/process-camry-le.mjs: processes 6 source JPGs to WebP 800×1000 (4:5) with sharp, cover fit, quality 82. Output to public/autos/05-toyota-camry-le/.
+- Ran the script: 6 WebP files created (184.7 + 149.9 + 122.7 + 128.7 + 100.3 + 64.3 = 750.6KB total).
+- Added the Camry LE to the CARS array in script.js (id:5, numPhotos:6, featured:false).
+
+BUG FIX (important):
+- While verifying, found that the Malibu modal (id:4, added in Task 5) was showing the SVG silhouette fallback instead of the photo gallery. Root cause: openModal() checked `c.photos && c.photos.length` to decide whether to build the gallery, but the Malibu (and Camry LE) had `photos:[]` (empty array) since they use only local WebPs with no remote fallback URLs. `[].length === 0` (falsy) → fell to the SVG branch.
+- Fixed by introducing a galCount(c) helper that returns `c.photos.length` if the array has URLs, otherwise `c.numPhotos || 0`. Updated setGal(), buildGallery(), openModal(), and cardHTML() to all use galCount() consistently.
+- Added `numPhotos` field to the 3 new cars: Camry XSE (numPhotos:4), Malibu (numPhotos:5), Camry LE (numPhotos:6). Also cleaned up Camry XSE's `photos:['','','','']` to `photos:[]` for consistency.
+- This fix retroactively fixed the Malibu modal that was silently broken since Task 5.
+
+Verification (Agent Browser + VLM):
+- Inventory grid now shows 5 cars: Honda Civic Sport, Toyota Corolla Nightshade, Toyota Camry XSE, Chevrolet Malibu LT, Toyota Camry LE.
+- All 5 car card cover photos load locally (same-origin), all 4:5, all 800×1000.
+- Camry LE card cover = /autos/05-toyota-camry-le/1.webp (front 3/4 of white Camry). VLM confirmed: "cover photo shows the front of a white sedan".
+- Camry LE card: badges "Seminuevo" + "NUEVO INGRESO", price $15,500, monthly ≈ $296/mes, specs (88,500 mi · Automática 8 velocidades · Gasolina 32 MPG · Delantera FWD).
+- All 5 modals now show photo galleries correctly (previously Malibu was broken):
+  - Honda Civic: 8 photos (1/8)
+  - Toyota Corolla: 5 photos (1/5)
+  - Toyota Camry XSE: 4 photos (1/4)
+  - Chevrolet Malibu: 5 photos (1/5) ← was broken, now fixed
+  - Toyota Camry LE: 6 photos (1/6)
+- Camry LE modal specs complete: 2018, 88,500 mi, 2.5L I4 · 203 HP, Automática 8 velocidades, Delantera (FWD), Gasolina · 32 MPG, Blizzard Pearl (Blanco), Seminuevo.
+- VLM confirmed modal: "2018 Toyota Camry LE, front of white sedan, $15,500, 88,500 mi, gallery counter 1/6".
+- Lint clean.
+
+Stage Summary:
+- New car 2018 Toyota Camry LE added to inventory with real researched specs.
+- 6 photos processed to 4:5 WebP (750.6KB total), cover = front 3/4 view of white Camry.
+- Bug fix: galCount() helper + numPhotos field fixed gallery logic for cars with empty photos arrays. Retroactively fixed the Malibu modal that was broken since Task 5.
+- Inventory now: 5 cars (Honda Civic, Toyota Corolla, Toyota Camry XSE, Chevrolet Malibu, Toyota Camry LE). Total image weight: 25 WebP files (8+5+4+5+6) = ~3.9MB.
