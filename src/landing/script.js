@@ -103,7 +103,17 @@ const CARS = [
    cond:'Seminuevo', badge:'V6 · NUEVO INGRESO', featured:true,
    photos:[], numPhotos:6,
    desc:'El Camry XSE V6 — la versión que los puristas buscan. Motor 3.5L V6 de 301 HP y 267 lb-ft con transmisión automática de 8 velocidades: 0-60 en 5.8 segundos, el sedán japonés más rápido de su clase. Ruby Flare Pearl sobre cuero negro, techo panorámico de vidrio, JBL con 9 parlantes + subwoofer, head-up display de 10" y Toyota Safety Sense 2.5+ completo. El XSE V6 fue descontinuado después de 2024 — esta es la última oportunidad de tener el Camry V6 de fábrica. 70 mil millas en un 3.5L Toyota son apenas el primer tercio de su vida útil.',
-   feats:['Motor 3.5L V6 · 301 HP','Techo panorámico de vidrio','JBL · 9 parlantes + sub','Head-up display 10"','Toyota Safety Sense 2.5+','Rines 19" aleación']}
+   feats:['Motor 3.5L V6 · 301 HP','Techo panorámico de vidrio','JBL · 9 parlantes + sub','Head-up display 10"','Toyota Safety Sense 2.5+','Rines 19" aleación']},
+
+  {id:8, folder:'08-toyota-tacoma-sr5',
+   year:2022, make:'Toyota', model:'Tacoma SR5 · Bed 5ft', type:'pickup',
+   price:26000, miles:47202,
+   trans:'Automática 6 velocidades', fuel:'Gasolina · 20 MPG', drive:'Trasera (RWD · 4x2)',
+   engine:'2.7L I4 · 159 HP', ext:'Blizzard Pearl (Blanco)',
+   cond:'Seminuevo', badge:'NUEVO INGRESO', featured:true,
+   photos:[], numPhotos:5,
+   desc:'La Tacoma SR5 es la pickup mediana que conserva su valor mejor que cualquier otra en América — y esta está como nueva. Motor 2.7L I4 de 159 HP con transmisión automática de 6 velocidades y tracción trasera (4x2), la combinación más eficiente de la línea. Blizzard Pearl sobre interior gris, cama de 5 pies forrada, Toyota Safety Sense P de serie y la legendaria confiabilidad del chasis Tacoma que mantiene su valor año tras año. 47 mil millas apenas: este 2.7L está hecho para pasar de las 300 mil con el mantenimiento al día. La pickup que trabaja y conserva su valor.',
+   feats:['Cama 5 pies forrada','Toyota Safety Sense P','CarPlay / Android Auto','Pantalla 7" táctil','Cámara de retroceso','Rines 16" aleación']}
 ];
 
 /* ================= SILUETAS (respaldo de autos sin fotos) ================= */

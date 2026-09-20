@@ -343,3 +343,48 @@ Stage Summary:
 - 6 photos processed to 4:5 WebP (668.5KB total), cover = front 3/4 view of red Camry.
 - Featured:true with distinctive "V6 · NUEVO INGRESO" badge to differentiate from the 2020 Camry XSE (4-cylinder) already in inventory.
 - Inventory now: 7 cars. Total image weight: 37 WebP files (8+5+4+5+6+6+6) = ~5.2MB.
+
+---
+Task ID: 9
+Agent: main (Z.ai Code)
+Task: Add a new car (2022 Toyota Tacoma SR5, white/Blizzard Pearl, 5ft bed, $26,000, 47,202 mi) to the inventory. Same procedure: keep 4:5 aspect ratio, cover photo = front view, research real specs. First pickup in the inventory.
+
+Work Log:
+- 5 photos uploaded: IMG_9880, IMG_9888, IMG_9889, IMG_9890, IMG_9893 (all .JPG.jpeg, 768×1024, ~83-105KB each — already compressed).
+- Analyzed all 5 photos with z-ai vision (VLM). Results:
+  - IMG_9889 = front 3/4, white Toyota Tacoma, truck faces right, shows grille + headlights + hood + driver-side profile (doors + fender) + front portion of truck bed + both front wheels → PORTADA (foto 1)
+  - IMG_9880 = straight front (head-on), white Tacoma, shows full front fascia (grille + headlights + hood + bumper + windshield + side mirrors) but no side profile/bed
+  - IMG_9893 = rear 3/4, white Tacoma
+  - IMG_9888 = interior seats, gray interior
+  - IMG_9890 = interior seats (wider view showing front and rear seats), gray interior
+  - IMG_9889 chosen as PORTADA because it shows the front AND the side profile with wheels + bed — consistent with the cover style of all previous cars.
+- Researched 2022 Toyota Tacoma SR5 specs via z-ai web_search (3 searches). Confirmed:
+  - Engine: 2.7L DOHC 16-valve 4-cylinder with VVT-i, 159 HP @ 5200 RPM, 180 lb-ft torque @ 3800 RPM (base engine for SR/SR5 trims; 3.5L V6 is optional)
+  - Transmission: 6-speed automatic (6-speed manual available on some configs)
+  - Drivetrain: Rear-Wheel Drive (RWD / 4x2 — the user specified 4x2); 4WD available on other configs
+  - Fuel economy (2.7L 4-cyl, RWD): 20 city / 23 highway / 21 combined MPG (EPA)
+  - Color: Blizzard Pearl (the official Toyota white — consistent with the white truck in photos)
+  - Features: Toyota Safety Sense P (TSS-P) standard, 7-inch touchscreen infotainment, Apple CarPlay, Android Auto, Amazon Alexa, Bluetooth, Wi-Fi hotspot, backup camera, 16-inch dark gray alloy wheels (SR5 Appearance Package)
+  - Bed: 5 feet (short bed — the user specified "Bed 5FT")
+- Created scripts/process-tacoma.mjs: processes 5 source photos to WebP 800×1000 (4:5) with sharp, cover fit, quality 82. All photos are 768×1024 so a 4% upscale is applied (imperceptible in WebP).
+- Ran the script: 5 WebP files created (52.5 + 51.1 + 49.6 + 58.7 + 58.6 = 270.5KB total, all 800×1000).
+- Added the Tacoma to the CARS array in script.js (id:8, type:'pickup', numPhotos:5, featured:true, badge:'NUEVO INGRESO'). The Tacoma is the first pickup in the inventory.
+
+Verification (Agent Browser + VLM):
+- Inventory grid now shows 8 cars: Honda Civic Sport, Toyota Corolla Nightshade, Toyota Camry XSE (2020), Chevrolet Malibu LT, Toyota Camry LE, MINI Cooper S Countryman, Toyota Camry XSE V6 (2024), Toyota Tacoma SR5.
+- Filter pills now show "Todos 8", "SUV 1", "Pickups 1", "Sedanes 6" — the Pickups filter appeared automatically because of type:'pickup'.
+- Tacoma card cover photo = /autos/08-toyota-tacoma-sr5/1.webp, 800×1000 (4:5 exact), loads locally. VLM confirmed: "white Toyota Tacoma, front of the truck visible, $26,000 visible".
+- Tacoma card: badges "Seminuevo" + "NUEVO INGRESO", featured:true (yellow border), price $26,000, monthly ≈ $496/mes, specs (47,202 mi · Automática 6 velocidades · Gasolina 20 MPG · Trasera RWD · 4x2).
+- Modal opens with 5-photo gallery, all 5 load locally, all 4:5 (800×1000), counter "1/5".
+- Modal specs complete: 2022, 47,202 mi, 2.7L I4 · 159 HP, Automática 6 velocidades, Trasera (RWD · 4x2), Gasolina · 20 MPG, Blizzard Pearl (Blanco), Seminuevo.
+- Modal features chips: Cama 5 pies forrada, Toyota Safety Sense P, CarPlay / Android Auto, Pantalla 7" táctil, Cámara de retroceso, Rines 16" aleación.
+- VLM confirmed modal: "2022 Toyota Tacoma SR5, front of white pickup, $26,000, 47,202 mi, gallery counter 1/5".
+- Tested Pickups filter: clicking it shows only the Tacoma (1 vehículo). Works correctly.
+- The 7 existing cars still display correctly (no regressions).
+- Lint clean.
+
+Stage Summary:
+- New car 2022 Toyota Tacoma SR5 added to inventory with real researched specs.
+- 5 photos processed to 4:5 WebP (270.5KB total), cover = front 3/4 view of white Tacoma.
+- First pickup in the inventory (type:'pickup'); Pickups filter pill appeared automatically.
+- Inventory now: 8 cars (6 sedans + 1 SUV + 1 pickup). Total image weight: 42 WebP files (8+5+4+5+6+6+6+5) = ~5.5MB.
