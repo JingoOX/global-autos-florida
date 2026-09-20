@@ -518,3 +518,126 @@ Stage Summary:
 - Replaced: old yellow diamond SVG logo → new Capa 1.png logo (yellow sports car + GLOBAL AUTOS FLORIDA text) in both header (46px height) and footer (50px height).
 - New logo: public/logo-global-autos.png (600×100, 22KB, PNG with alpha).
 - Inventory (10 cars), hero, financing, broker, nosotros, contacto sections all intact — no regressions.
+
+---
+Task ID: 13
+Agent: full-stack-developer
+Task: 5 changes to the Global Autos Florida landing page: (1) remove all "+500 autos" references (honesty — business is new), (2) replace the SVG map with a real Google Maps iframe embed, (3) rewrite ALL copy to be vanguard/modern (less family-oriented, more innovative/forward-thinking), (4) add a Dark/Light mode toggle in the topbar with a full light theme, (5) add an EN/ES language toggle with English as primary default.
+
+Work Log:
+- Read worklog.md to understand prior work (10 cars in inventory, logo replaced, stats section removed, landing served as Next.js `/` route via dangerouslySetInnerHTML of body.html + styles.css + script.js).
+- Read all 3 landing files (body.html 617 lines, styles.css 508 lines, script.js 478 lines) to understand current structure: dark theme only, Spanish-only copy, custom SVG map at line 480-510, "+500 autos" in 3 places (hero-sub, hero-trust badge, about-facts), CARS array with monolingual Spanish fields.
+
+CHANGE 1 — Remove +500 autos references (body.html):
+- Hero sub: rewrote from "compra, cambia o financia... equipo que ya entregó más de 500 autos en Florida" → "Buy, trade or finance your next vehicle with a team engineered around transparency and precision. Need auction pricing? We're your broker. No fine print, no friction — just a sharper way to drive."
+- Hero trust badge: removed the `<span class="sep"></span> +500 autos entregados` line entirely. Hero-trust now shows only "4.9 on Google · 187 reviews · Credit approval in 24h".
+- About-facts list item: replaced `<b>+500 autos</b><span>Entregados en el área de Kissimmee–Orlando</span>` → `<b>New business</b><span>Starting with transparency in Kissimmee</span>` (EN) / `<b>Negocio nuevo</b><span>Empezando con transparencia en Kissimmee</span>` (ES).
+- Also replaced `<b>Dealer familiar</b>` → `<b>Modern dealer</b>` / `<b>Dealer moderno</b>`.
+- Verified via JS: visible body text no longer contains "500 autos", "+500", or "más de 500". (The metadata description in layout.tsx still mentions "+500 autos" but task explicitly said NOT to change layout.tsx — and meta tags are in <head>, not visible body text.)
+
+CHANGE 2 — Google Maps iframe (body.html):
+- Replaced the entire `<svg viewBox="0 0 520 400">...</svg>` map (40+ lines of SVG with custom Kissimmee road layout, pin animation, route path) with a single `<iframe src="https://maps.google.com/maps?q=1054+American+Way+Kissimmee+FL+34741&output=embed" width="100%" height="100%" style="border:0;min-height:420px;width:100%;display:block" loading="lazy" allowfullscreen>`.
+- Fixed the typo "ABRIR EN GOOGL E MAPS" → "Open in Google Maps" (EN) / "Abrir en Google Maps" (ES). Kept the `.map-cta` button with the same Google Maps directions href.
+- Verified via JS: `.map-wrap` now contains only `<iframe>` + `<a>` (no `<svg>`), iframe loads at 616×525px, src is the correct Google Maps embed URL.
+
+CHANGE 3 — Vanguard/modern copy rewrite (body.html):
+- Hero subtext: now about innovation/transparency ("team engineered around transparency and precision", "sharper way to drive") — no delivery count.
+- About section lead paragraph: rewrote from "nació en el corazón de Kissimmee con una convicción sencilla... no debería sentirse como una batalla" → "was built in the heart of Kissimmee on a simple conviction: buying a car in this country shouldn't feel like a battle — and it shouldn't be fought in a language that isn't yours."
+- About paragraph 2: rewrote from family-dealer "lote pequeño sobre la US-192... cientos de familias del área de Orlando" → "We started with a clean slate and a sharper idea: a tech-driven, fully transparent dealership where the price you see is the price you pay..."
+- About paragraph 3: rewrote from "negocio familiar administrado por su propia gente, no por inversionistas" → "We're a modern, owner-operated business — not a chain run by out-of-state investors."
+- Removed the blockquote "No vendemos autos a clientes: acompañamos a vecinos en una de las decisiones más grandes de su vida en este país" + "— Familia Global Autos Florida" cite → replaced with "We're not here to sell you a car. We're here to redefine how the car business should feel — transparent, modern, and built around you." / "— Global Autos Florida".
+- About h2: "Más que un dealer, vecinos de Kissimmee" → "Not just a dealer — a new way to buy" / "Más que un dealer, una nueva forma de comprar".
+- Broker CTA section: "TÚ ELIGES EL VEHÍCULO. NOSOTROS TE AYUDAMOS CON EL PROCESO." → "YOU PICK THE VEHICLE. WE HANDLE THE PROCESS." — more vanguard tone throughout.
+- Footer about blurb: rewrote from "Dealer familiar de autos seminuevos" → "A modern, transparent pre-owned dealership".
+- All section h2s, subs, feature cards, financing list items, broker steps, gains list, reviews, contact labels — all rewritten to vanguard/modern tone in both EN and ES.
+
+CHANGE 4 — Dark/Light mode toggle (styles.css + script.js + body.html):
+- Added two toggle buttons to the topbar `.tb-right` area:
+  - Theme toggle: sun/moon SVG icon button (#themeToggle). Shows sun in dark mode (click to go light), moon in light mode (click to go dark).
+  - Language toggle: "EN | ES" text button (#langToggle) with the active language highlighted in yellow.
+- Added a comprehensive light theme via `html.light { ... }` selector in styles.css that overrides all 7 core CSS variables: --bg (was #070707 → #F5F5F0), --coal (#0C0C0C → #FFFFFF), --panel (#121212 → #FFFFFF), --panel2 (#171717 → #F1F1EB), --line (#242424 → #E2E2DA), --text (#F4F4EF → #0E0E0E), --muted (#A9A9A1 → #5C5C54). Yellow accent (#FFCE00) and amber (#C99800) kept the same.
+- Added 90+ light-mode-specific overrides for elements with hardcoded dark colors that didn't use CSS variables: topbar (#050505 → #FFFFFF), header.scrolled backdrop (rgba(7,7,7,.92) → rgba(255,255,255,.92)), marquee (#090909 → #FFFFFF), car-card showroom gradient (#111/#0A0A0A → #F1F1EB/#E7E7DF), all input fields (#0E0E0E → #FFFFFF), all border colors (#232323/#262626/#2A2A2A → #E2E2DA/#D8D8CE), badges, modal-box, gal-main, gal-thumb, gal-arrow, toast, footer, etc.
+- The hero keeps a subtle gradient effect in light mode (radial yellow glow + repeating-linear-grant grid) but text colors switch to dark for readability.
+- The yellow CTA section (.bcta) and yellow float WhatsApp button are unchanged in both modes (they're already yellow with dark text).
+- JS: `applyTheme(theme)` function adds/removes `.light` class on `<html>` and saves to `localStorage.theme`. Default is dark. Toggle button click handler flips between dark/light.
+- Verified via JS: in light mode, body bg = rgb(245,245,240), car-card bg = rgb(255,255,255), modal-box bg = rgb(255,255,255), modal-desc color = rgb(92,92,84) (muted gray, readable). All sections (hero, inventory, financing, broker, nosotros, contacto, footer, modal, toast) render correctly in light mode.
+
+CHANGE 5 — EN/ES language toggle, English primary (body.html + script.js):
+- Approach: added `data-en="..."` and `data-es="..."` attributes to every text-bearing element in body.html. Default visible text is English. For elements with mixed HTML content (text + `<br>`, `<b>`, `<a>`, `<span>`), used `data-en-html="..."` and `data-es-html="..."`. For form inputs, used `data-en-ph` and `data-es-ph` for placeholders. For `<option>` elements, used `data-en`/`data-es` on each option.
+- The `setLang(lang)` function in script.js:
+  1. Walks all `[data-en]` elements and uses a smart `setElText()` helper that updates only the direct text node (preserving child elements like SVG icons, `<br>`, etc.) — this prevents wiping out SVG icons inside buttons.
+  2. Sets `innerHTML` for all `[data-en-html]` elements.
+  3. Updates `placeholder` attribute for all `[data-en-ph]` elements.
+  4. Updates `textContent` for all `<option>[data-en]` elements.
+  5. Updates `document.documentElement.lang` attribute.
+  6. Updates the toggle button's active state.
+  7. Re-renders dynamic content: `renderPills()` (filter pill labels), `render()` (car cards), and if modal is open, calls `openModal(gal.car.id)` to refresh modal content (title, price, monthly label, kicker, specs labels+values, chips, description, gallery aria-labels).
+  8. Saves to `localStorage.lang`.
+- CARS array rewritten: each of the 10 cars now has a `t: { en: {...}, es: {...} }` object with bilingual `trans`, `fuel`, `drive`, `engine`, `ext`, `cond`, `badge`, `desc`, `feats` fields. A `T(c, field)` helper returns `c.t[lang][field]`. All English car descriptions and features were translated from the original Spanish (e.g. Honda Civic: "El compacto más recomendado" → "America's most recommended compact"; "Crucero adaptativo" → "Adaptive cruise"; "Cámara de retroceso" → "Backup camera").
+- TYPES array (filter pills) rewritten from `[['all','Todos'],['sport','Deportivos'],...]` to `[{v:'all',en:'All',es:'Todos'},...]` — `renderPills()` reads the right label per language.
+- Modal spec labels made bilingual via `SPEC_KEYS` array (en: ['Year','Mileage','Engine','Transmission','Drivetrain','Fuel','Exterior color','Condition'] / es: ['Año','Millaje','Motor','Transmisión','Tracción','Combustible','Color exterior','Condición']).
+- Count noun: `lang === 'es' ? (n===1 ? 'vehículo' : 'vehículos') : (n===1 ? 'vehicle' : 'vehicles')`.
+- Monthly label: `'/mes*'` (ES) vs `'/mo*'` (EN).
+- "View details" / "Ver detalles" button label.
+- WhatsApp aria-label: "Ask on WhatsApp" / "Consultar por WhatsApp".
+- Gallery aria-labels: "Photo X of Y" / "Foto X de Y"; "Previous photo" / "Foto anterior"; "Next photo" / "Foto siguiente"; "View photo X" / "Ver foto X".
+- `waCar(c)` and `mTest` WhatsApp messages made bilingual.
+- Toast messages made bilingual via `I18N` object: finNeedName, finOk, cNeedName, cOk, finWaMsg.
+- Default language: `let lang = localStorage.getItem('lang') || 'en'` — English is primary. On page load, `setLang(lang)` is called which applies all the English text from data-en attributes (the body.html defaults are already English, so this is consistent).
+- Language toggle button: "EN | ES" with the active language highlighted in yellow. Clicking EN or ES switches instantly. Clicking the separator toggles between the two.
+- Verified: fresh page load (no localStorage) → English by default (heroH1="YOUR NEXT CAR STARTS HERE", firstNav="Inventory", countNoun="vehicles", pills=["All","SUV","Pickups","Sedans"], firstCardButton="View details"). Clicking ES → all visible text switches to Spanish (heroH1="TU PRÓXIMO AUTO EMPIEZA AQUÍ", firstNav="Inventario", pills=["Todos","SUV","Pickups","Sedanes"], mKicker="Seminuevo · Stock GA-1001", mDesc starts with "El compacto más recomendado..."). Clicking EN → switches back. Both persist across reload via localStorage.
+
+Verification (Agent Browser + JS eval):
+- ✅ Page loads with English text by default (htmlLang="en", localStorageLang="en", heroH1="YOUR NEXT CAR STARTS HERE").
+- ✅ Dark mode is default (htmlHasLight=false, bodyBg=rgb(7,7,7), localStorageTheme="dark").
+- ✅ Dark mode toggle: clicking switches html.light class on, bodyBg=rgb(245,245,240), car-card bg=white, modal-box bg=white, modal-desc color=muted gray (readable). localStorageTheme="light". Clicking again switches back to dark.
+- ✅ Language toggle: clicking ES switches all visible text to Spanish instantly (htmlLang="es", heroH1="TU PRÓXIMO AUTO EMPIEZA AQUÍ", firstNav="Inventario", countNoun="vehículos", sortFirst="Destacados", firstCardButton="Ver detalles"). localStorageLang="es". Clicking EN switches back.
+- ✅ Google Maps iframe loads correctly (iframe src=correct URL, 616×525px, fills map-wrap). No SVG map remains in .map-wrap (only iframe + a link).
+- ✅ Map button text fixed: "Open in Google Maps" (EN) / "Abrir en Google Maps" (ES) — typo "GOOGL E" is gone.
+- ✅ No "+500 autos" references in visible body text (verified by cloning body, removing script/style tags, and searching textContent — 0 matches for "500 autos", "+500", "más de 500").
+- ✅ All 10 cars still display in inventory (carCount=10). Filter pills show "All 10 / SUV 2 / Pickups 1 / Sedans 7".
+- ✅ Car modal still works with galleries: opened modal for Civic → 8 thumbnails, gallery counter "1/8", main image loads, all 8 specs render, all 6 feature chips render, description in current language. Switching language with modal open re-renders modal content live (kicker, monthly label, specs labels, chips, description, gallery aria-labels all update).
+- ✅ Both toggles persist preference on reload: set lang=es + theme=light → reload → htmlLang="es", htmlHasLight=true, heroH1="TU PRÓXIMO AUTO EMPIEZA AQUÍ", bodyBg=light. Cleared localStorage → reload → defaults to English + dark.
+- ✅ Light mode fully usable across all sections (verified CSS computed values for topbar, hero, marquee, car cards, showroom, search input, sort select, pills, badges, financing quick form, broker steps, gains list, about blockquote, about-facts, feature cards, reviews, contact list, map-wrap, cform, footer, modal-box, modal-show, gal-main, gal-thumb, gal-arrow, gal-count, modal-specs, chips, toast — all have appropriate light backgrounds, dark text, and visible borders).
+- ✅ Lint clean (bun run lint exit 0).
+- ✅ Dev server log clean (all GET / 200, no errors).
+
+Stage Summary:
+- All 5 changes implemented in 3 files (body.html, styles.css, script.js) — no changes to layout.tsx, page.tsx, or public/ images.
+- body.html: 617→560 lines. Rewrote all visible copy to vanguard/modern tone. Added data-en/data-es (or data-en-html/data-es-html) attributes to ~150+ text-bearing elements. Replaced SVG map with Google Maps iframe. Removed all 3 "+500 autos" references. Added 2 toggle buttons to topbar.
+- styles.css: 508→725 lines. Added 90+ light-theme CSS overrides via `html.light` selector. Added toggle button styles (tb-toggles, tb-toggle, langToggle with active state, themeToggle with sun/moon icon swap).
+- script.js: 478→470 lines (rewrote, didn't grow). Added `setLang()` function with smart `setElText()` that preserves child SVG/BR elements. Added `applyTheme()` + theme toggle handler. Rewrote CARS array with `t: {en, es}` bilingual sub-objects for all 10 cars. Added `T(c, field)` helper. Rewrote TYPES array as bilingual. Made modal spec labels, count noun, monthly label, WhatsApp messages, toast messages, gallery aria-labels all bilingual. `setLang()` re-renders car cards + pills + modal content live.
+- Page now defaults to English + dark mode. Both toggles persist via localStorage. All 10 cars display correctly. Modal galleries work. Google Maps embed loads. No "+500 autos" anywhere in visible text. Light mode is fully usable across every section.
+
+---
+Task ID: 13
+Agent: full-stack-developer (delegated) + main (verification)
+Task: Remove +500 autos references (honesty), replace SVG map with real Google Maps, rewrite copy to vanguard/modern, add dark/light mode toggle, add EN/ES language toggle with English as primary.
+
+Work Log (by full-stack-developer subagent):
+- Removed all 3 "+500 autos" references: hero-sub (rewrote to mention transparency), hero-trust badge (removed entirely), about-facts (replaced with "New business / Starting with transparency").
+- Replaced the entire SVG map (40+ lines) with a Google Maps iframe embed (https://maps.google.com/maps?q=1054+American+Way+Kissimmee+FL+34741&output=embed). Fixed the "GOOGL E MAPS" typo.
+- Rewrote all copy to vanguard/modern tone: hero subtext (transparency/precision), about section (modern dealer instead of family dealer), blockquote (redefining car buying), broker CTA. Both EN and ES versions.
+- Added dark/light mode toggle: sun/moon icon button in topbar, 90+ light-mode CSS overrides via `html.light` selector covering all sections (hero, inventory, financing, broker, nosotros, contacto, footer, modal, toast). Persists to localStorage.theme, defaults to dark.
+- Added EN/ES language toggle: "EN|ES" button in topbar. ~150+ text elements have data-en/data-es (or data-en-html/data-es-html) attributes. CARS array rewritten with bilingual t:{en,es} sub-objects for all 10 cars. setLang() re-renders car cards, filter pills, and modal content live. Defaults to English, persists to localStorage.lang.
+- Smart setElText() helper preserves child SVG/BR elements when switching text.
+
+Verification (by main agent with Agent Browser + VLM):
+- English is default: h1 = "YOUR NEXT CAR STARTS HERE", localStorage.lang = "en" ✅
+- Language toggle works: clicking switches to Spanish (h1 = "TU PRÓXIMO AUTO EMPIEZA AQUÍ"), localStorage updated ✅
+- Dark mode toggle works: dark = rgb(7,7,7) bg, light = rgb(245,245,240) bg with dark text, html.light class applied ✅
+- Persistence: set lang=es + theme=light, reloaded, preferences maintained ✅
+- +500 autos: 0 matches in visible text (has500autos=false, hasMasDe500=false, hasPlus500=false) ✅
+- Google Maps: iframe present with correct src, VLM confirmed "interactive Google Maps embed showing Kissimmee" ✅
+- Inventory: 10 cars display, filter pills in English ("All 10", "SUV 2", "Pickups 1", "Sedans 7") ✅
+- Modal: opens with 8-photo gallery, title/price/features all in English ("2024 Honda Civic Sport Hatchback", $22,500, "Honda Sensing", etc.) ✅
+- Light mode: VLM confirmed "light cream background, high-contrast text, logo visible, toggle button present" ✅
+- Topbar: both toggle buttons visible (EN|ES language + sun/moon theme) ✅
+- Lint clean ✅
+
+Stage Summary:
+- 5 major changes all implemented and verified: +500 removed, Google Maps live, vanguard copy, dark/light toggle, EN/ES toggle.
+- English is now the primary language (default on first visit).
+- Both toggles persist preferences across reloads via localStorage.
+- Light theme is fully readable across all sections.
+- Inventory (10 cars), modal galleries, and all interactivity preserved — no regressions.

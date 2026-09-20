@@ -506,3 +506,220 @@ footer{background:#050505;border-top:1px solid var(--line);padding:64px 0 0}
   *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
   html{scroll-behavior:auto}
 }
+
+/* ============ TOPBAR TOGGLES (lang + theme) ============ */
+.tb-toggles{display:inline-flex;align-items:center;gap:8px;margin-left:6px}
+.tb-toggle{display:inline-flex;align-items:center;justify-content:center;border:1px solid #2A2A2A;background:transparent;color:#8E8E86;padding:6px 10px;font-family:var(--ft);font-weight:700;font-size:12.5px;letter-spacing:1.5px;text-transform:uppercase;transition:.22s;line-height:1;min-height:30px}
+.tb-toggle:hover{border-color:var(--yellow);color:var(--yellow)}
+#langToggle{gap:0;padding:6px 10px}
+#langToggle .lang-sep{color:#4A4A44;margin:0 4px;font-weight:700}
+#langToggle .lang-opt{color:#8E8E86;transition:.2s;padding:1px 0}
+#langToggle .lang-opt.active{color:#0A0A0A;background:var(--yellow);padding:1px 5px;clip-path:polygon(0 0,calc(100% - 3px) 0,100% 3px,100% 100%,3px 100%,0 calc(100% - 3px))}
+#themeToggle{width:30px;height:30px;padding:0;overflow:hidden;position:relative}
+#themeToggle .ic{width:16px;height:16px;color:var(--yellow)}
+#themeToggle .ic-moon{display:none}
+#themeToggle .ic-sun{display:block}
+html.light #themeToggle .ic-moon{display:block}
+html.light #themeToggle .ic-sun{display:none}
+
+/* ============ LIGHT THEME ============ */
+html.light{
+  --bg:#F5F5F0; --coal:#FFFFFF; --panel:#FFFFFF; --panel2:#F1F1EB;
+  --line:#E2E2DA; --yellow:#FFCE00; --yellow2:#FFE454; --amber:#C99800;
+  --text:#0E0E0E; --muted:#5C5C54;
+}
+html.light body{background:var(--bg);color:var(--text)}
+html.light ::selection{background:var(--yellow);color:#0A0A0A}
+html.light ::-webkit-scrollbar-track{background:#EAEAE2}
+html.light ::-webkit-scrollbar-thumb{background:#C8C8BE;border:3px solid #EAEAE2}
+html.light ::-webkit-scrollbar-thumb:hover{background:var(--amber)}
+html.light #progress{background:linear-gradient(90deg,var(--amber),var(--yellow))}
+
+html.light .topbar{background:#FFFFFF;border-bottom:1px solid #E2E2DA;color:#5C5C54}
+html.light .topbar a{color:#5C5C54}
+html.light .topbar a:hover{color:var(--amber)}
+html.light .tb-toggle{border-color:#D8D8CE;color:#5C5C54}
+html.light .tb-toggle:hover{border-color:var(--amber);color:var(--amber)}
+html.light #langToggle .lang-opt{color:#5C5C54}
+html.light #langToggle .lang-sep{color:#C8C8BE}
+
+html.light header.scrolled{background:rgba(255,255,255,.92);backdrop-filter:blur(14px);border-color:var(--line)}
+html.light .nav-tel{border:1px solid #D8D8CE;color:var(--text)}
+html.light .nav-tel:hover{border-color:var(--amber);color:var(--amber)}
+html.light .burger{border:1px solid #D8D8CE}
+html.light #navPanel{background:rgba(245,245,240,.97)}
+html.light #navPanel.open a{color:var(--text)}
+html.light #navPanel a:hover{color:var(--amber)}
+html.light #navPanel .close{border:1px solid #D8D8CE;color:var(--amber)}
+
+html.light .eyebrow .idx{color:#A8A89E}
+
+/* Hero — keep dark hero gradient for impact even in light mode (premium look) */
+html.light .hero{color:var(--text)}
+html.light .hero::before{
+  background:
+    radial-gradient(58% 42% at 50% 108%,rgba(255,206,0,.10),transparent 70%),
+    repeating-linear-gradient(90deg,rgba(0,0,0,.025) 0 1px,transparent 1px 90px),
+    repeating-linear-gradient(0deg,rgba(0,0,0,.020) 0 1px,transparent 1px 90px);
+}
+html.light .hero-sub{color:#3A3A33}
+html.light .hero-trust{color:#3A3A33}
+html.light .hero-trust b{color:var(--text)}
+html.light .hero-trust .sep{background:#C8C8BE}
+html.light .hero-word{-webkit-text-stroke:1px rgba(0,0,0,.10)}
+html.light .scroll-cue{color:#999}
+
+html.light .marquee{background:#FFFFFF;border-block:1px solid var(--line)}
+html.light .mq-name{-webkit-text-stroke:1px #D0D0C6}
+html.light .mq-sep{background:var(--amber)}
+
+html.light .btn-o{border:1px solid #D0D0C6;color:var(--text)}
+html.light .btn-o:hover{border-color:var(--amber);color:var(--amber)}
+
+/* Inventory cards */
+html.light .search input{background:var(--panel);border:1px solid #D8D8CE;color:var(--text)}
+html.light .search input::placeholder{color:#9A9A90}
+html.light .search .ic{color:#9A9A90}
+html.light .sort select{background:var(--panel) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23C99800' stroke-width='2' fill='none'/%3E%3C/svg%3E") no-repeat right 14px center;border:1px solid #D8D8CE;color:var(--text)}
+html.light .pill{border:1px solid #D0D0C6;color:var(--muted)}
+html.light .pill i{color:#9A9A90}
+html.light .pill:hover{border-color:var(--amber);color:var(--text)}
+html.light .pill.active{background:var(--yellow);color:#0A0A0A;border-color:var(--yellow)}
+html.light .pill.active i{color:#6b5a00}
+html.light .count-line{color:var(--muted)}
+html.light .count-line b{color:var(--amber)}
+
+html.light .car-card{background:var(--panel);border:1px solid #E2E2DA}
+html.light .car-card:hover{border-color:rgba(255,206,0,.65);box-shadow:0 26px 50px -22px rgba(0,0,0,.18)}
+html.light .car-card.featured{border-color:rgba(255,206,0,.65)}
+html.light .showroom{background:
+  radial-gradient(130% 100% at 50% 108%,rgba(255,206,0,.10),transparent 55%),
+  linear-gradient(180deg,#F1F1EB 0%,#E7E7DF 100%)}
+html.light .badge{background:rgba(255,255,255,.86);border:1px solid #D8D8CE;color:var(--muted)}
+html.light .badge.hot{background:var(--yellow);color:#0A0A0A;border-color:var(--yellow)}
+html.light .card-title h3 small{color:var(--muted)}
+html.light .mo{color:var(--muted)}
+html.light .specs{border-block:1px solid #E2E2DA;color:var(--muted)}
+html.light .specs .ic{color:var(--amber)}
+html.light .card-actions .wa-mini{border:1px solid #D8D8CE;color:var(--muted)}
+html.light .card-actions .wa-mini:hover{border-color:var(--amber);color:var(--amber)}
+html.light .empty{border:1px dashed #C8C8BE}
+html.light .empty p{color:var(--muted)}
+html.light .inv-note{color:#7A7A70}
+html.light .inv-note a{color:var(--amber)!important}
+
+/* Financing */
+html.light .fin{background:var(--coal);border-block:1px solid var(--line)}
+html.light .fin::before{background:radial-gradient(circle,rgba(255,206,0,.10),transparent 65%)}
+html.light .fin-list b{color:var(--text)}
+html.light .quick{background:var(--panel2);border:1px solid #E2E2DA}
+html.light .quick p{color:var(--muted)}
+html.light .quick label{color:var(--muted)}
+html.light .quick input,html.light .quick select{background:#FFFFFF;border:1px solid #D8D8CE;color:var(--text)}
+html.light .quick select{background:#FFFFFF url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23C99800' stroke-width='2' fill='none'/%3E%3C/svg%3E") no-repeat right 14px center}
+html.light .quick .fine{color:#7A7A70}
+
+/* Broker */
+html.light .plat{border:1px solid #E2E2DA;background:var(--panel)}
+html.light .plat b{color:var(--text)}
+html.light .plat small{color:var(--muted)}
+html.light .plat:hover{border-color:rgba(255,206,0,.55)}
+html.light .plat.hot b{color:var(--amber)}
+html.light .plat.hot{border-color:rgba(255,206,0,.45)}
+html.light .bk-art{border:1px solid #E2E2DA;background:var(--panel);color:var(--amber)}
+html.light .bk-tag{color:var(--amber)}
+html.light .bk-what-txt .wlead{color:var(--text)}
+html.light .bk-what-txt p{color:var(--muted)}
+html.light .step{background:var(--panel);border:1px solid #E2E2DA}
+html.light .step:hover{border-color:rgba(255,206,0,.55);box-shadow:0 20px 44px -20px rgba(0,0,0,.12)}
+html.light .step .n{-webkit-text-stroke:1.2px #B8B8AE}
+html.light .step:hover .n{-webkit-text-stroke-color:var(--amber)}
+html.light .step p{color:var(--muted)}
+html.light .step.depo{background:var(--yellow);border-color:var(--yellow)}
+html.light .step.depo .n{color:rgba(10,10,10,.28)}
+html.light .step.depo h4{color:#0A0A0A}
+html.light .step.depo p{color:#3D3200}
+html.light .gains li{border-bottom:1px solid #E2E2DA;color:#3A3A33}
+html.light .gains li:hover{color:var(--amber)}
+html.light .gains .ck{border-color:var(--amber);color:var(--amber)}
+
+/* BCTA is yellow w/ dark text — unchanged in both modes */
+
+/* About */
+html.light .about-txt .lead{color:var(--text)}
+html.light .about-txt p{color:var(--muted)}
+html.light .about-txt .inlink{color:var(--amber);border-bottom:1px solid var(--amber)}
+html.light .about-txt .inlink:hover{color:var(--yellow2);border-color:var(--yellow2)}
+html.light .about-aside blockquote{background:var(--panel);border:1px solid #E2E2DA;border-left:3px solid var(--yellow);color:#3A3A33}
+html.light .about-aside .qm{color:var(--yellow)}
+html.light .about-aside cite{color:var(--muted)}
+html.light .about-facts li{border-bottom:1px solid #E2E2DA}
+html.light .about-facts b{color:var(--text)}
+html.light .about-facts span{color:var(--muted)}
+html.light .feat{background:var(--panel);border:1px solid #E2E2DA}
+html.light .feat:hover{border-color:rgba(255,206,0,.55)}
+html.light .feat .fic{border:1px solid var(--amber);color:var(--amber)}
+html.light .feat p{color:var(--muted)}
+html.light .gbadge{border:1px solid #E2E2DA;background:var(--coal)}
+html.light .gbadge .g{color:var(--text)}
+html.light .gbadge .g span{color:var(--amber)}
+html.light .gbadge small{color:var(--muted)}
+html.light .rev{background:var(--panel);border:1px solid #E2E2DA}
+html.light .rev:hover{border-color:rgba(255,206,0,.4)}
+html.light .rev q{color:#3A3A33}
+html.light .rev .who span{color:var(--muted)}
+
+/* Contact */
+html.light #contacto{background:var(--coal);border-top:1px solid var(--line)}
+html.light .cont-list li{border-bottom:1px solid #E2E2DA}
+html.light .cont-list .cic{border:1px solid var(--amber);color:var(--amber)}
+html.light .cont-list small{color:var(--muted)}
+html.light .cont-list a{color:var(--text)}
+html.light .cont-list a:hover{color:var(--amber)}
+html.light .hours{color:var(--muted)}
+html.light .hours b{color:var(--text)}
+html.light .map-wrap{border:1px solid #E2E2DA;background:#EAEAE2}
+html.light .map-cta{background:var(--yellow);color:#0A0A0A}
+html.light .map-cta:hover{background:var(--yellow2)}
+html.light .cform{background:var(--panel);border:1px solid #E2E2DA}
+html.light .cform label{color:var(--muted)}
+html.light .cform input,html.light .cform textarea{background:#FFFFFF;border:1px solid #D8D8CE;color:var(--text)}
+html.light .cform .hint{color:#7A7A70}
+
+/* Footer */
+html.light footer{background:#FFFFFF;border-top:1px solid var(--line)}
+html.light .foot-grid h4{color:var(--text)}
+html.light .foot-links a{color:var(--muted)}
+html.light .foot-links a:hover{color:var(--amber)}
+html.light .foot-contact{color:var(--muted)}
+html.light .foot-contact a:hover{color:var(--amber)}
+html.light .foot-contact .ic{color:var(--amber)}
+html.light .foot-about p{color:var(--muted)}
+html.light .foot-bot{border-top:1px solid #E2E2DA;color:#7A7A70}
+
+/* Modal */
+html.light .modal-bg{background:rgba(60,60,55,.55)}
+html.light .modal-box{background:var(--panel);border:1px solid #E2E2DA}
+html.light .modal-close{background:#F1F1EB;border:1px solid #D8D8CE;color:var(--muted)}
+html.light .modal-close:hover{color:var(--amber);border-color:var(--amber)}
+html.light .modal-show{background:radial-gradient(130% 100% at 50% 105%,rgba(255,206,0,.10),transparent 55%),linear-gradient(180deg,#F1F1EB,#E7E7DF)}
+html.light .gal-main{background:#EAEAE2;border:1px solid #E2E2DA}
+html.light .gal-thumb{background:#EAEAE2;border:1px solid #D0D0C6}
+html.light .gal-arrow{background:rgba(255,255,255,.85);border:1px solid #D0D0C6;color:var(--text);backdrop-filter:blur(4px)}
+html.light .gal-arrow:hover{background:var(--yellow);border-color:var(--yellow);color:#0A0A0A}
+html.light .gal-count{background:rgba(255,255,255,.85);border:1px solid #D0D0C6;color:var(--text)}
+html.light .modal-body .kicker{color:var(--amber)}
+html.light .modal-price .m{color:var(--muted)}
+html.light .modal-specs div{border-bottom:1px solid #E2E2DA}
+html.light .modal-specs dt{color:var(--muted)}
+html.light .modal-specs dd{color:var(--text)}
+html.light .chip{border:1px solid #D8D8CE;color:var(--muted)}
+html.light .chip .ic{color:var(--amber)}
+html.light .modal-desc{color:var(--muted)}
+html.light .modal-fine{color:#7A7A70}
+
+/* Toast */
+html.light #toast{background:#FFFFFF;border:1px solid var(--yellow);color:var(--text)}
+html.light #toast .ic{color:var(--amber)}
+
+/* WhatsApp float — yellow, unchanged */
