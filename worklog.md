@@ -433,3 +433,52 @@ Stage Summary:
 - 6 photos processed to 4:5 WebP (510.6KB total), cover = front 3/4 view of red CR-V.
 - Second SUV in the inventory (type:'suv'); SUV filter count now shows 2.
 - Inventory now: 9 cars (6 sedans + 2 SUVs + 1 pickup). Total image weight: 48 WebP files (8+5+4+5+6+6+6+5+6) = ~6.0MB.
+
+---
+Task ID: 11
+Agent: main (Z.ai Code)
+Task: (1) Fix the Mini Cooper brand from 'MINI' to 'BMW' (MINI is a BMW Group brand). (2) Add the last car: 2025 Hyundai Elantra SEL Sport, white/Serenity White, $18,999, 7,881 mi. Same procedure: 4:5 aspect ratio, cover photo = front view, research real specs.
+
+Work Log:
+PART 1 — Mini Cooper brand fix:
+- Changed id:6 make field from 'MINI' to 'BMW' and model from 'Cooper S Countryman' to 'MINI Cooper S Countryman' in script.js. The folder name (06-mini-cooper-s-countryman) was left unchanged to avoid breaking image paths.
+- Verified: the card now shows "BMW2024 MINI Cooper S Countryman" and the modal title shows "2024 BMW MINI Cooper S Countryman".
+
+PART 2 — Hyundai Elantra SEL Sport:
+- 6 photos uploaded: IMG_9922, IMG_9923, IMG_9925, IMG_9932, IMG_9933, IMG_9938 (all .JPG.jpeg, 768×1024, ~77-150KB each — already compressed).
+- Analyzed all 6 photos with z-ai vision (VLM). Results:
+  - IMG_9922 = front 3/4, white Hyundai Elantra, car faces left, shows grille + headlights + hood + driver-side profile (doors, windows, fender) + front driver-side wheel + rear passenger-side wheel partially → PORTADA (foto 1)
+  - IMG_9923 = straight front (head-on), white Elantra, shows full front fascia (grille + headlights + hood + bumper) but wheels/side largely obscured
+  - IMG_9925 = rear 3/4, white Elantra
+  - IMG_9932 = interior seats, black interior
+  - IMG_9933 = interior dashboard, black interior
+  - IMG_9938 = interior dashboard showing steering wheel + digital instrument cluster
+  - IMG_9922 chosen as PORTADA because it shows the front 3/4 angle with side profile and wheels — consistent with all previous cars.
+- Researched 2025 Hyundai Elantra SEL Sport specs via z-ai web_search (3 searches). Confirmed:
+  - Engine: 2.0L 4-cylinder, 147 HP @ 6200 RPM, 132 lb-ft torque @ 4500 RPM
+  - Transmission: IVT (Intelligent Variable Transmission — Hyundai's CVT)
+  - Drivetrain: Front-Wheel Drive (FWD)
+  - Fuel economy: 30 city / 39 highway / 34 combined MPG
+  - Color: Serenity White (confirmed from 2025 Elantra SEL Sport color palette: Intense Blue, Ecotronic Gray, Abyss Black, Amazon Gray, Fluid Metal, Serenity White, Ultimate Red)
+  - SEL Sport features: 17-inch gloss black alloy wheels, gloss black rear spoiler, leather-wrapped steering wheel and shift knob, 8-inch color touchscreen, Hyundai SmartSense (Forward Collision-Avoidance Assist with Pedestrian Detection, Lane Keeping Assist, Driver Attention Warning), Bluetooth, CarPlay/Android Auto
+- Created scripts/process-elantra.mjs: processes 6 source photos to WebP 800×1000 (4:5) with sharp, cover fit, quality 82. All photos are 768×1024 so a 4% upscale is applied.
+- Ran the script: 6 WebP files created (98.4 + 67.4 + 109.0 + 64.5 + 38.6 + 41.6 = 419.5KB total, all 800×1000).
+- Added the Elantra to the CARS array in script.js (id:10, type:'sedan', numPhotos:6, featured:true, badge:'NUEVO INGRESO').
+
+Verification (Agent Browser + VLM):
+- Inventory grid now shows 10 cars. Mini (id:6) now displays make='BMW' correctly.
+- Elantra card cover photo = /autos/10-hyundai-elantra-sel-sport/1.webp, 800×1000 (4:5 exact), loads locally. VLM confirmed: "front three-quarter view of a white sedan".
+- Elantra card: badges "Seminuevo" + "NUEVO INGRESO", featured:true (yellow border), price $18,999, monthly ≈ $362/mes, specs (7,881 mi · IVT · Gasolina 34 MPG · Delantera FWD).
+- Modal opens with 6-photo gallery, all 6 load locally, all 4:5 (800×1000), counter "1/6".
+- Modal specs complete: 2025, 7,881 mi, 2.0L I4 · 147 HP, IVT, Delantera (FWD), Gasolina · 34 MPG, Serenity White (Blanco), Seminuevo.
+- Modal features chips: Paquete Sport · gloss black, Spoiler trasero gloss black, Rines 17" aleación, Hyundai SmartSense completo, CarPlay / Android Auto, Volante forrado en cuero.
+- VLM confirmed modal: "2025 Hyundai Elantra SEL Sport, front 3/4 of white sedan, $18,999, 7,881 mi, gallery counter 1/6".
+- Mini modal title now shows "2024 BMW MINI Cooper S Countryman".
+- The 9 existing cars still display correctly (no regressions).
+- Lint clean.
+
+Stage Summary:
+- Mini Cooper brand corrected: MINI → BMW (MINI is a BMW Group brand). Model updated to "MINI Cooper S Countryman".
+- Last car 2025 Hyundai Elantra SEL Sport added to inventory with real researched specs.
+- 6 photos processed to 4:5 WebP (419.5KB total), cover = front 3/4 view of white Elantra.
+- Inventory COMPLETE: 10 cars (7 sedans + 2 SUVs + 1 pickup). Total image weight: 54 WebP files (8+5+4+5+6+6+6+5+6+6) = ~6.4MB.

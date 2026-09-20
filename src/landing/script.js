@@ -86,7 +86,7 @@ const CARS = [
    feats:['Toyota Safety Sense P','Frenado automático de emergencia','Crucero adaptativo','Bi-LED headlights','CarPlay / Android Auto','Cámara de retroceso']},
 
   {id:6, folder:'06-mini-cooper-s-countryman',
-   year:2024, make:'MINI', model:'Cooper S Countryman', type:'suv',
+   year:2024, make:'BMW', model:'MINI Cooper S Countryman', type:'suv',
    price:24500, miles:13500,
    trans:'7 velocidades DCT', fuel:'Gasolina · 28 MPG', drive:'Delantera (FWD · 4x2)',
    engine:'2.0L Turbo I4 · 189 HP', ext:'Nanuq White Metallic',
@@ -123,7 +123,17 @@ const CARS = [
    cond:'Seminuevo', badge:'NUEVO INGRESO', featured:true,
    photos:[], numPhotos:6,
    desc:'El CR-V Touring es el SUV compacto más vendido de América en su versión más equipada. Motor 1.5L Turbo de 190 HP y 179 lb-ft con CVT y tracción AWD con Intelligent Control System — la combinación que entrega 30 MPG combinado sin sacrificar tracción en lluvia o grava. Basque Red Pearl II sobre cuero gris, Honda Sensing completo (frenado automático, crucero adaptativo, alerta de carril), navegación satelital Honda, techo panorámico, asientos delanteros calefactados y puerta trasera eléctrica. 62 mil millas apenas: este 1.5L Turbo está hecho para pasar de las 200 mil. El SUV familiar que lo tiene todo.',
-   feats:['Honda Sensing completo','AWD · Intelligent Control','Techo panorámico','Navegación satelital Honda','Asientos de cuero calefactados','Puerta trasera eléctrica']}
+   feats:['Honda Sensing completo','AWD · Intelligent Control','Techo panorámico','Navegación satelital Honda','Asientos de cuero calefactados','Puerta trasera eléctrica']},
+
+  {id:10, folder:'10-hyundai-elantra-sel-sport',
+   year:2025, make:'Hyundai', model:'Elantra SEL Sport', type:'sedan',
+   price:18999, miles:7881,
+   trans:'IVT', fuel:'Gasolina · 34 MPG', drive:'Delantera (FWD)',
+   engine:'2.0L I4 · 147 HP', ext:'Serenity White (Blanco)',
+   cond:'Seminuevo', badge:'NUEVO INGRESO', featured:true,
+   photos:[], numPhotos:6,
+   desc:'El Elantra SEL Sport 2025 — prácticamente nuevo, con apenas 7,881 millas. Motor 2.0L I4 de 147 HP con transmisión IVT, la combinación que entrega 34 MPG combinado (39 en autopista) con el look deportivo del paquete Sport: spoiler trasero gloss black, rines 17" aleación gloss black y volante + palanca forrados en cuero. Serenity White sobre interior negro, Hyundai SmartSense completo (frenado automático con detección de peatones, crucero adaptativo, alerta de carril) y pantalla táctil de 8" con CarPlay y Android Auto. El sedán más nuevo del lote, con toda la garantía de fiabilidad Hyundai y el estilo que lo hace ver más caro de lo que cuesta.',
+   feats:['Paquete Sport · gloss black','Spoiler trasero gloss black','Rines 17" aleación','Hyundai SmartSense completo','CarPlay / Android Auto','Volante forrado en cuero']}
 ];
 
 /* ================= SILUETAS (respaldo de autos sin fotos) ================= */
