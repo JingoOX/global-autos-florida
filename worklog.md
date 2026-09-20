@@ -158,3 +158,46 @@ Stage Summary:
 - 4 photos processed to 4:5 WebP (518.7KB total), cover photo = front 3/4 view as requested.
 - object-position bug fixed globally (50% 55% → 50% 50%) — improves ALL inventory cards, not just the Camry.
 - Inventory now: 3 cars (Honda Civic, Toyota Corolla, Toyota Camry). Total image weight: 14 WebP files (Honda 8 + Corolla 5 + Camry 4) = ~2.4MB.
+
+---
+Task ID: 5
+Agent: main (Z.ai Code)
+Task: Add a new car (2019 Chevrolet Malibu LT, black/Mosaic Black Metallic, $8,500, 90,000 mi) to the inventory. Same procedure as Task 4: keep 4:5 aspect ratio, cover photo = front view, research real specs.
+
+Work Log:
+- 5 photos uploaded to /home/z/my-project/upload/: IMG_9208.jpg, IMG_9209.jpg, IMG_9212.jpg, IMG_9215.jpg, IMG_9217.jpg (each ~7-8MB, 3024×3780).
+- Analyzed all 5 photos with z-ai vision (VLM). One (IMG_9212) failed the first API call with a format error (code 1210) but succeeded on retry. Results:
+  - IMG_9208 = front 3/4, black Malibu, shows grille/headlights + full side profile (wheels front+rear) → PORTADA (foto 1)
+  - IMG_9209 = front 3/4, black Malibu (similar angle, less of rear wheel visible) → foto 2
+  - IMG_9212 = rear 3/4, black Malibu → foto 3
+  - IMG_9215 = interior, front seats + dashboard → foto 4
+  - IMG_9217 = interior, dashboard/touchscreen → foto 5
+  - Between the two front 3/4 photos, IMG_9208 was chosen as the cover because it shows more of the car's complete side profile (both front and rear wheels visible), making it a stronger listing cover.
+- Researched 2019 Chevrolet Malibu LT specs via z-ai web_search (3 searches). Confirmed:
+  - Engine: 1.5L Turbo DOHC I4 with VVT, 160 HP @ 5700 RPM, 184 lb-ft torque @ 2500-3000 RPM
+  - Transmission: CVT (Continuously Variable Transmission)
+  - Drivetrain: Front-Wheel Drive (FWD)
+  - Fuel economy: 29 city / 36 highway / 33 combined MPG
+  - Color: Mosaic Black Metallic (confirmed from the official 2019 Malibu color list; the car in photos is black)
+  - Features: Chevrolet Infotainment 3 with 8" touchscreen, MyLink, Bluetooth, 6-speaker sound, push-button start, Rear Seat Reminder, rearview camera, CarPlay/Android Auto
+- Created scripts/process-malibu.mjs: processes the 5 source JPGs to WebP at exactly 800×1000 (4:5) with sharp, cover fit, quality 82. Output to public/autos/04-chevrolet-malibu-lt/.
+- Ran the script: 5 WebP files created (182.7 + 132.9 + 148.5 + 131.2 + 111.7 = 707.1KB total, all 800×1000).
+- Added the Malibu to the CARS array in script.js (id:4) with all researched specs, description, and 6 features. Set featured:false (it's the budget-friendly option at $8,500). photos:[] (no remote fallback — local WebPs exist).
+- The hardened photoImg() from Task 4 handles empty photos arrays cleanly (no data-fb/onerror emitted).
+
+Verification (Agent Browser + VLM):
+- Inventory grid now shows 4 cars: Honda Civic Sport (id:1), Toyota Corolla Nightshade (id:2), Toyota Camry XSE (id:3), Chevrolet Malibu LT (id:4).
+- All 4 car card cover photos load locally (same-origin), all 4:5 (aspect 0.80), all 800×1000.
+- Malibu card cover photo = /autos/04-chevrolet-malibu-lt/1.webp (the front 3/4 view). VLM confirmed: "cover photo shows the front of a black sedan".
+- Malibu card: badges "Seminuevo" + "NUEVO INGRESO", price $8,500, monthly ≈ $162/mes, specs (90,000 mi · CVT · Gasolina 33 MPG · Delantera FWD), featured:false.
+- Modal opens correctly with 5-photo gallery, all 5 load locally, all 4:5 aspect, all 800×1000.
+- Modal specs complete: Año 2019, Millaje 90,000 mi, Motor 1.5L Turbo I4 · 160 HP, Transmisión CVT, Tracción Delantera (FWD), Combustible Gasolina · 33 MPG, Color Mosaic Black Metallic, Condición Seminuevo.
+- Modal features chips: Chevrolet Infotainment 3 · 8", Push-button start, Bluetooth · 6 parlantes, Rear Seat Reminder, Cámara de retroceso, CarPlay / Android Auto.
+- The 3 existing cars still display correctly (no regressions).
+- Lint clean.
+
+Stage Summary:
+- New car 2019 Chevrolet Malibu LT added to inventory with real researched specs.
+- 5 photos processed to 4:5 WebP (707.1KB total), cover photo = front 3/4 view of black Malibu.
+- Inventory now: 4 cars (Honda Civic, Toyota Corolla, Toyota Camry, Chevrolet Malibu). Total image weight: 19 WebP files (8+5+4+5) = ~3.1MB.
+- To add another car in the future: drop WebP photos in public/autos/NN-folder/ (cover = 1.webp = front view), add the car to the CARS array in script.js with id:5 and an empty photos:[]. The hardened photoImg() handles the rest.

@@ -68,7 +68,17 @@ const CARS = [
      ''
    ],
    desc:'El Camry en su versión más deportiva: el XSE. Motor 2.5L Dynamic Force de 206 HP con transmisión automática de 8 velocidades — la combinación que convirtió al Camry en el sedán más vendido de América. Celestial Silver Metallic sobre cuero negro, techo panorámico, JBL, head-up display y Toyota Safety Sense 2.0+ completo. 64 mil millas apenas: este motor está hecho para pasar de las 200 mil sin sudar.',
-   feats:['Techo panorámico','Asientos de cuero calefactados','JBL Premium Audio','Head-up display','Toyota Safety Sense 2.0+','CarPlay / Android Auto']}
+   feats:['Techo panorámico','Asientos de cuero calefactados','JBL Premium Audio','Head-up display','Toyota Safety Sense 2.0+','CarPlay / Android Auto']},
+
+  {id:4, folder:'04-chevrolet-malibu-lt',
+   year:2019, make:'Chevrolet', model:'Malibu LT', type:'sedan',
+   price:8500, miles:90000,
+   trans:'CVT', fuel:'Gasolina · 33 MPG', drive:'Delantera (FWD)',
+   engine:'1.5L Turbo I4 · 160 HP', ext:'Mosaic Black Metallic',
+   cond:'Seminuevo', badge:'NUEVO INGRESO', featured:false,
+   photos:[],
+   desc:'El Malibu LT con el motor 1.5L Turbo de 160 HP y 184 lb-ft de torque — la combinación que entrega 33 MPG combinado sin sacrificar el empuje en autopista. Mosaic Black Metallic sobre interior gris, Chevrolet Infotainment 3 con pantalla de 8", push-button start y 6 parlantes. 90 mil millas en un 1.5L Turbo son apenas el comienzo: este bloque está hecho para pasar de las 200 mil con el mantenimiento al día. Precio honesto para un sedán mediano que aún tiene mucho que dar.',
+   feats:['Chevrolet Infotainment 3 · 8"','Push-button start','Bluetooth · 6 parlantes','Rear Seat Reminder','Cámara de retroceso','CarPlay / Android Auto']}
 ];
 
 /* ================= SILUETAS (respaldo de autos sin fotos) ================= */
