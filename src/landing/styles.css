@@ -468,8 +468,7 @@ footer{background:#050505;border-top:1px solid var(--line);padding:64px 0 0}
 }
 @media(max-width:860px){
   .stats-grid{grid-template-columns:repeat(2,1fr)}
-  .topbar .tb-left{display:none}
-  .topbar .container{justify-content:center}
+  .topbar{display:none}
 }
 @media(max-width:720px){
   .steps .step:nth-child(n){grid-column:span 12}
