@@ -674,3 +674,25 @@ Stage Summary:
 - 2 light mode bugs fixed: hero car image now visible (mix-blend-mode normal + alpha transparency), brand logos now dark/visible (filter brightness(0) for images + dark stroke for fallback text).
 - Dark mode completely unaffected (all fixes are html.light prefixed).
 - 5 CSS rules added to the light theme section of styles.css.
+
+---
+Task ID: 15
+Agent: main (Z.ai Code)
+Task: Fix 3 final bugs: (1) modal close button should be just an X (no text), (2) raw HTML `<a href=` showing in the About section broker paragraph, (3) remove the pin icon from the Google Maps button.
+
+Work Log:
+- Analyzed the 3 user screenshots with VLM to identify each bug.
+- Bug 1 — Modal close button: Found at body.html line 568. Had `data-en="Close detail" data-es="Cerrar detalle" aria-label="Close detail"` attributes that caused the text "Close detail" to render. Fix: removed the `data-en`/`data-es` attributes (so no text is set by setLang), changed aria-label to "Close". The button now contains only the X SVG icon.
+- Bug 2 — Raw HTML in broker paragraph: Found at body.html line 363. The paragraph used `data-en`/`data-es` attributes containing HTML (`<a href="#broker" class="inlink">broker service</a>`). The setElText() function in script.js uses textContent/nodeValue (not innerHTML), so the HTML tags were inserted as literal text → users saw `<a href=` as visible text. Fix: changed to `data-en-html`/`data-es-html` (which the setLang function handles via `el.innerHTML = v`). Additional fix: the attribute value contained double quotes inside `href="#broker"` which broke the HTML attribute parsing (the `"` after `href=` prematurely closed the `data-en-html="..."` attribute). Changed the attribute delimiters from double quotes to single quotes: `data-en-html='...<a href="#broker" class="inlink">...'`.
+- Bug 3 — Pin icon in Google Maps button: Found at body.html line 496. The `.map-cta` button contained an SVG location pin icon before the text. Fix: removed the entire `<svg>...</svg>` element, leaving only the text "Open in Google Maps".
+
+Verification (Agent Browser + VLM):
+- Bug 1: Modal close button — JS confirmed: textContent="", hasDataEn=false, svgCount=1, ariaLabel="Close". VLM confirmed: "just an X icon".
+- Bug 2: Broker paragraph — JS confirmed in English: hasLink=true, linkText="broker service", linkHref="#broker", hasRawHtml=false. JS confirmed in Spanish (after toggle): hasLink=true, linkText="servicio de broker", hasRawHtml=false. VLM confirmed: "no raw HTML code visible, text reads cleanly".
+- Bug 3: Map button — JS confirmed: svgCount=0, hasSvg=false, innerHTML="Open in Google Maps". VLM confirmed: "just text (OPEN IN GOOGLE MAPS), no icon".
+- Language toggle (EN→ES→EN) still works correctly with the broker link rendering properly in both languages.
+- Lint clean.
+
+Stage Summary:
+- 3 final UI bugs fixed: modal close = X only (no text), broker paragraph renders as proper link (not raw HTML), Google Maps button = text only (no pin icon).
+- All fixes are minimal and surgical — no regressions to other functionality.
