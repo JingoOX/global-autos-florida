@@ -482,3 +482,39 @@ Stage Summary:
 - Last car 2025 Hyundai Elantra SEL Sport added to inventory with real researched specs.
 - 6 photos processed to 4:5 WebP (419.5KB total), cover = front 3/4 view of white Elantra.
 - Inventory COMPLETE: 10 cars (7 sedans + 2 SUVs + 1 pickup). Total image weight: 54 WebP files (8+5+4+5+6+6+6+5+6+6) = ~6.4MB.
+
+---
+Task ID: 12
+Agent: main (Z.ai Code)
+Task: Remove 2 sections from the landing (stats section + "café" paragraph) and replace the old Global Autos logo (yellow diamond SVG) with the new "Capa 1.png" logo in header and footer.
+
+Work Log:
+- User uploaded 4 files: 3 reference screenshots (pasted_image_*.png) showing parts to remove, and "Capa 1.png" (the new logo).
+- Analyzed all 4 with z-ai vision (VLM):
+  - pasted_image_1789880294092.png = the paragraph "Si nos visitas, vas a encontrar café, aire acondicionado..." (last paragraph of the nosotros/about section) → REMOVE
+  - pasted_image_1789880309276.png = the entire stats section (500+ / 4.9 / 187 / 24h) → REMOVE
+  - pasted_image_1789880351700.png = the header showing the old yellow diamond SVG logo → REPLACE logo with Capa 1
+  - Capa 1.png = new logo: yellow sports car illustration + "GLOBAL AUTOS FLORIDA" text in metallic/gold 3D letters (1622×271, 6:1 horizontal ratio, has alpha transparency)
+- Optimized the logo: sharp resized from 1622×271 to 600×100 (PNG, compressionLevel 9, 22KB) and saved to public/logo-global-autos.png.
+- Edited body.html with 4 MultiEdit operations:
+  1. Header logo: replaced the entire `<svg class="brand-badge">...</svg>` + `<span class="brand-txt">...</span>` block with a single `<img src="/logo-global-autos.png" class="brand-logo" style="height:46px;width:auto" fetchpriority="high">`. Kept the `<a href="#inicio" class="brand">` wrapper.
+  2. Stats section: removed the entire `<div class="stats">...</div>` block (9 lines including the 4 stat cards with data-count attributes).
+  3. Nosotros paragraph: removed the `<p>Si nos visitas, vas a encontrar café, aire acondicionado y un equipo que habla tu idioma — literalmente. Esa es la diferencia entre comprar un auto… y comprarlo con Global.</p>` line.
+  4. Footer logo: same replacement as header — SVG + brand-txt → `<img src="/logo-global-autos.png" class="brand-logo" style="height:50px;width:auto">`.
+- Cleaned up script.js: removed the entire ioNum IntersectionObserver block (lines 470-482) that animated the stat counters, since the `.num` elements no longer exist. Updated the section comment from "REVEAL + CONTADORES" to "REVEAL ON SCROLL".
+- The .brand CSS class (display:flex; align-items:center; gap:13px) still works correctly with a single img child — no CSS changes needed.
+
+Verification (Agent Browser + VLM):
+- Header: new logo loads correctly (IMG tag, 600×100, /logo-global-autos.png, naturalWidth>0). No brand-txt remnants. VLM confirmed: "logo with a yellow car icon and the text GLOBAL AUTOS FLORIDA".
+- Stats section: completely gone (querySelector('.stats') = null, querySelector('.stats-grid') = null, querySelectorAll('.num').length = 0). VLM confirmed: "no stats section visible".
+- "café" paragraph: gone (no <p> contains "café, aire acondicionado").
+- Footer: new logo loads correctly (IMG tag, /logo-global-autos.png, loaded). VLM confirmed: "logo featuring a yellow car with the text GLOBAL AUTOS FLORIDA".
+- Inventory: all 10 car cards still display correctly with their photos loading locally (verified after scroll — lazy-loading intact).
+- No 404s for /logo-global-autos.png (served from public/).
+- Lint clean.
+
+Stage Summary:
+- Removed: stats section (500+/4.9/187/24h) + "café, aire acondicionado" paragraph + stats counter JS.
+- Replaced: old yellow diamond SVG logo → new Capa 1.png logo (yellow sports car + GLOBAL AUTOS FLORIDA text) in both header (46px height) and footer (50px height).
+- New logo: public/logo-global-autos.png (600×100, 22KB, PNG with alpha).
+- Inventory (10 cars), hero, financing, broker, nosotros, contacto sections all intact — no regressions.

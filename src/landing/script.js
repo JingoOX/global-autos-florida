@@ -461,25 +461,11 @@ document.getElementById('burger').addEventListener('click', ()=>navPanel.classLi
 document.getElementById('navClose').addEventListener('click', ()=>navPanel.classList.remove('open'));
 navPanel.querySelectorAll('a').forEach(a=>a.addEventListener('click', ()=>navPanel.classList.remove('open')));
 
-/* ================= REVEAL + CONTADORES ================= */
+/* ================= REVEAL ON SCROLL ================= */
 const io = new IntersectionObserver(es=>es.forEach(en=>{
   if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); }
 }), {threshold:.12});
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
-
-const ioNum = new IntersectionObserver(es=>es.forEach(en=>{
-  if(!en.isIntersecting) return;
-  const el = en.target, target = parseFloat(el.dataset.count),
-        dec = +(el.dataset.decimals||0), suf = el.dataset.suffix||'';
-  const t0 = performance.now(), D = 1500;
-  (function tick(t){
-    const k = Math.min((t-t0)/D, 1), e = 1-Math.pow(1-k,3);
-    el.textContent = (target*e).toFixed(dec) + suf;
-    if(k<1) requestAnimationFrame(tick);
-  })(t0);
-  ioNum.unobserve(el);
-}), {threshold:.5});
-document.querySelectorAll('.num').forEach(el=>ioNum.observe(el));
 
 /* ================= SPOTLIGHT DEL HERO ================= */
 const hero = document.querySelector('.hero'), spot = document.getElementById('heroSpot');
